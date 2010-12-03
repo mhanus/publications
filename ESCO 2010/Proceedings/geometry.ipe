@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70010" creator="Ipe 7.0.10">
-<info created="D:20100818174306" modified="D:20100818175017"/>
+<info created="D:20100818174306" modified="D:20100822001328"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -247,12 +247,34 @@ h
 128 256 m
 384 256 l
 </path>
-<text matrix="1 0 0 1 16 0" transformations="translations" pos="160 352" stroke="black" type="label" width="31.147" height="11.953" depth="3.35" valign="baseline" size="LARGE">$h,\ \rho$</text>
-<text matrix="1 0 0 1 11 -4" transformations="translations" pos="160 320" stroke="black" type="label" width="40.072" height="11.761" depth="3.35" valign="baseline" size="LARGE">$p_i,\ T_i$</text>
-<text matrix="1 0 0 1 25 -39" transformations="translations" pos="160 320" stroke="black" type="label" width="17.085" height="14.119" depth="3.1" valign="baseline" size="huge">$V_i$</text>
+<text matrix="1 0 0 1 145 -3" transformations="translations" pos="160 352" stroke="black" type="label" width="32.776" height="11.761" depth="3.35" valign="baseline" size="LARGE">$P,\ \varrho$</text>
+<text matrix="1 0 0 1 144 -3" transformations="translations" pos="160 320" stroke="black" type="label" width="30.533" height="11.761" depth="4.91" valign="baseline" size="LARGE">$\ T_{1,2}$</text>
+<text matrix="1 0 0 1 147 -41" transformations="translations" pos="160 320" stroke="black" type="label" width="32.241" height="14.115" depth="5.89" valign="baseline" size="huge">$\Omega_{1,2}$</text>
 <text matrix="1 0 0 1 81 45" transformations="translations" pos="160 352" stroke="black" type="label" width="40.894" height="11.095" depth="3.35" valign="baseline" size="LARGE">$\varphi = 0$</text>
 <text matrix="-0.00217374 0.999998 -0.999998 -0.00217374 468.711 76.1995" transformations="rigid" pos="160 352" stroke="black" type="label" width="40.894" height="11.095" depth="3.35" valign="baseline" size="LARGE">$\varphi = 0$</text>
 <text matrix="-0.00217374 0.999998 -0.999998 -0.00217374 754.711 78.1658" transformations="rigid" pos="160 352" stroke="black" type="label" width="40.894" height="11.095" depth="3.35" valign="baseline" size="LARGE">$\varphi = 0$</text>
 <text matrix="1 0 0 1 79 -244" transformations="translations" pos="160 352" stroke="black" type="label" width="40.894" height="11.095" depth="3.35" valign="baseline" size="LARGE">$\varphi = 0$</text>
+<path matrix="0.990218 0 0 0.366397 0.985972 81.631" stroke="black">
+256.858 128 m
+239.834 143.446
+200.781 143.446
+192.497 155.281 s
+128 128 m
+145.024 143.447
+184.077 143.447
+192.361 155.281 s
+</path>
+<text matrix="1 0 0 1 -5.00683 -5.46199" transformations="translations" pos="192.395 150.51" stroke="black" type="label" width="8.086" height="9.963" depth="0" valign="baseline" size="Large">$h$</text>
+<path matrix="0 0.990218 -0.366397 0 303.294 1.94541" stroke="black">
+256.858 128 m
+239.834 143.446
+200.781 143.446
+192.497 155.281 s
+128 128 m
+145.024 143.447
+184.077 143.447
+192.361 155.281 s
+</path>
+<text matrix="1 0 0 1 40.9646 37.7787" transformations="translations" pos="192.395 150.51" stroke="black" type="label" width="8.086" height="9.963" depth="0" valign="baseline" size="Large">$h$</text>
 </page>
 </ipe>

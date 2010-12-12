@@ -119,6 +119,7 @@
 \DeclareOption{portrait}{\renewcommand{\baposter@format}{}}
 \DeclareOption{archE}{\renewcommand{\baposter@papersize}{archE}}
 \DeclareOption{elemposter}{\renewcommand{\baposter@papersize}{elemposter}}
+\DeclareOption{mikulas}{\renewcommand{\baposter@papersize}{mikulas}}
 \DeclareOption{a0paper}{\renewcommand{\baposter@papersize}{a0paper}}
 \DeclareOption{a4shrink}{\newcommand{\baposter@finalpapersize}{a4paper}}
 \DeclareOption{showframe}{\renewcommand{\baposter@showframe}{true}}

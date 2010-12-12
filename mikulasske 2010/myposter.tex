@@ -11,6 +11,7 @@
 \usepackage{relsize}
 \usepackage{multirow}
 \usepackage{bm}
+\usepackage{ulem} % colored underlining, strike out
 
 \usepackage[czech]{babel}
 \usepackage[utf8]{inputenc}
@@ -35,41 +36,19 @@
 
 \selectcolormodel{cmyk}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Picture inclusion settings.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\captionfont}{\footnotesize}
 \graphicspath{{obr/}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% Some math symbols used in the text
+% Custom math commands.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Format 
-\newcommand{\Matrix}[1]{\begin{bmatrix} #1 \end{bmatrix}}
-\newcommand{\Vector}[1]{\Matrix{#1}}
-\newcommand*{\SET}[1]{\ensuremath{\mathcal{#1}}}
-\newcommand*{\MAT}[1]{\ensuremath{\mathbf{#1}}}
-\newcommand*{\VEC}[1]{\ensuremath{\bm{#1}}}
-\newcommand*{\CONST}[1]{\ensuremath{\mathit{#1}}}
-\newcommand*{\norm}[1]{\mathopen\Vert #1 \mathclose\Vert}
-\newcommand*{\abs}[1]{\mathopen| #1 \mathclose|}
-\newcommand*{\absLR}[1]{\left| #1 \right|}
-
-\def\norm#1{\mathopen\| #1 \mathclose\|}
-\newcommand{\normLR}[1]{\left\| #1 \right\|}
-
-\newcommand{\restrict}[2]{\left.#1\right\vert_{#2}}
-\renewcommand{\it}[1]{^{(#1)}}
-\newcommand{\nod}{^{\mathrm{nod}}}
-\newcommand{\iterace}{i}
-\newcommand{\LP}{L\!\mid\!P}
-\renewcommand{\DH}{D\!\mid\!H}
-\newcommand{\captionfont}{\footnotesize}
-\newcommand{\keff}{k_{\mathrm{eff}}}
-\newcommand{\suma}{\sum_{\makebox[0pt]{${\scriptscriptstyle{g'\neq g}}$}}}
-\newcommand{\bj}{\mathbf{j}}
-\newcommand{\phinod}{\varphi(x)}
-\newcommand{\dphidx}[1][]{\frac{d^{#1}\phinod}{dx^{#1}}}
-
+\input{commands.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Multicol Settings
+% Multicol settings
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setlength{\columnsep}{0.7em}
 \setlength{\columnseprule}{0mm}
@@ -107,6 +86,8 @@
 \definecolor{lightyellow}{cmyk}{0,0,0.3,0.0}
 \definecolor{lighteryellow}{cmyk}{0,0,0.1,0.0}
 \definecolor{lightestyellow}{cmyk}{0,0,0.05,0.0}
+
+\input{mycolors.tex}
 
 
 %%
@@ -199,122 +180,273 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Motivace}{name=motivace,row=0,column=0,span=3}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{multicols}{2}
-      The method was evaluated on the GavabDB expression dataset which
-      contains 427 Scans, with 3 neutral scans and 4 expression scans per ID.
-      To test the impact of expression invariance on neutral data we used the
-      UND Dataset from the Face Recognition Great Vendor Test, which contains
-      953 neutral scans with one to eight scans per subject.
-    \end{multicols}
-    \mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\[.75em]
+    \begin{multicols}{2}    
+    \begin{itemize}
+    	\item Přesná simulace jaderného reaktoru vyžaduje zachycení mnoha provázaných fyzikálních jevů $\imply$ přirozeně nelineární úloha.
+    	\item Tyto jevy lze zhruba zařadit do následujících 4 oblastí, z nichž se\\ dále (velmi zjednodušeně) zaměříme pouze na první dvě.
+    \end{itemize}
+    \end{multicols}    
+    %\mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\[.75em]
     \noindent\makebox[\textwidth]{ 
-    \begin{tikzpicture}[auto, node distance=.05\linewidth]
-       \node [rectangle, inner sep= 5pt, text width=.45\linewidth, draw=black]  at (0,0)        (neutronika)     
-       {
-        lorem ipsum dolor sit amet consecteatur adipiscit elit\\
-        lorem ipsum dolor sit amet consecteatur adipiscit elit\\
-        lorem ipsum dolor sit amet consecteatur adipiscit elit
-       };
-       \node  [right=of neutronika, rectangle, inner sep= 5pt, text width=.45\linewidth, draw=black] (teplo)
-       {
-        lorem ipsum dolor sit amet consecteatur adipiscit elit\\
-        lorem ipsum dolor sit amet consecteatur adipiscit elit\\
-        lorem ipsum dolor sit amet consecteatur adipiscit elit
-       };   
+    \begin{tikzpicture}[auto, node distance=.05\linewidth,
+                        component/.style={rectangle, inner sep= 5pt, text width=.45\linewidth, rounded corners, drop shadow},
+                        divided/.style={rectangle split, rectangle split parts=2}]
+      \node [component, divided, draw=colN, fill=boxColorOne] at (0,0) (neutronika)     
+      {
+        \textcolor{colN}{\textbf{Neutronika}} - rozložení neutronového toku $\flx = \flx(\bx,\bomega,E,t)$
+        \nodepart{second}
+        \vspace{-1em}
+          \begin{itemize}\compresslist
+          	\item monoenergetická difúzní aproximace %\lightout{(v praxi mnohagrupová transportní teorie, Monte Carlo)}
+          	\item rychlá transienta (\sout{změna izotop. složení}, \sout{zpožděné neutr.}):\\ %\lightout{(v praxi navíc rovnice kinetiky, vyhořívání)}
+          	      dominantní teplotní vazba skrze Dopplerův efekt
+          \end{itemize}\vspace{-.5em}
+          $$
+            \frac1v\pd{\flx}{t} - 
+              %\underbrace{\vphantom{\big[}
+                \div D \grad
+              %}_{\oper{D}}
+               \flx +
+              %\underbrace{
+                \bigl[\Sigma_r(T) - \nu\Sigma_f\bigr]
+              %}_{\oper{R}(T)}
+               \flx = q_\flx
+          $$
+      };
+      \node [component, divided, right=of neutronika, semithick, draw=colT, fill=boxColorOne] (teplo)     
+      {
+        \textcolor{colT}{\textbf{Vedení tepla}} - Rozložení teploty $T = T(\bx,t)$ v palivu
+        \nodepart{second}
+        \vspace{-1em}
+          \begin{itemize}\compresslist
+          	\item ovlivňuje neutroniku, proudění chladiva i str. namáhání
+          	\item přestup tepla mezi palivem a chladivem je základním omezujícím faktorem pro provozní výkon reaktoru
+          \end{itemize}\vspace{-.5em}
+          $$
+            \rho c_p \pd{T}{t} - 
+              %\underbrace{\vphantom{\big[}
+                \div k(T) \grad
+              %}_{\oper{K}}
+               T -
+              %\underbrace{
+                \kappa\Sigma_f
+              %}_{\oper{Q}}
+               \flx = q_T
+          $$
+      };
+      \node [component, below=.025\linewidth of neutronika, semithick, draw=colF, fill=boxColorOne] (proudeni)     
+      {
+        \textcolor{colF}{\textbf{Termohydraulika}} - vývoj proudového pole chladiva/moder.
+        %\nodepart{second}       
+      };
+      \node [component, below=.025\linewidth of teplo, semithick, draw=colM, fill=boxColorOne] (mechanika)     
+      {
+        \textcolor{colM}{\textbf{Strukturální mechanika}} - termoelasticita struktur aktivní zóny
+        %\nodepart{second}       
+      }; 
     \end{tikzpicture}
     }
-%  \begin{tabular}{c|c}
-%    \hspace{-0.5em}
-%    Neutronika &
-%    \hspace{0.5em}\scalebox{0.735}{\input{und_mncg}}
-%  \end{tabular}\\
-   \mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\
-    \begin{multicols}{2}
-      Expression neutralization improves results on the expression dataset
-      without decreasing the accuracy on the neutral testset. Plotted is the
-      ratio of correct answers to  the number of possible correct answers.
-      Note the different scales for the two graphs.
-      Our approach has a high accuracy on the neutral (UND) dataset.
-    \end{multicols}
-    
     \vspace{0.5em}
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Numerické metody}{name=metody,column=0,span=1,below=motivace}{
+  \headerbox{Metoda štěpení operátorů}{name=splitting,column=0,span=1,below=motivace}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    FDM/FVM\\
-    nodal\\
-    FEM
-    \vspace{3em}
-  }
-  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Nodální metody}{name=nodal,column=1,span=1,below=motivace}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    FDM/FVM\\
-    nodal\\
-    FEM
-    \vspace{3em}
-  }
-  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{FEM}{name=nodal,column=2,span=1,below=motivace}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    FDM/FVM\\
-    nodal\\
-    FEM
-    \vspace{3em}
-  }
-  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Sdružená úloha}{name=sdruzena,column=0,span=1,below=metody}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \hspace*{.5em}\begin{minipage}{.95\linewidth}
+    Řešení jednotlivých fyzikálních modelů prostředky speciálně
+    vyvinutými pro každý z nich zvlášť. Např.
+  \end{minipage}\vspace{.75em}
+  %\begin{multicols*}{2}
+  %\begin{minipage}{\columnwidth}
+    \noindent\makebox[\columnwidth]{ 
+      \begin{tikzpicture}[auto, node distance=.05\linewidth]
+      \node[rectangle, font=\small] at (0,0)          (m1)
+      {
+        \textcolor{colN}{Neutronika} -- nodální metoda
+      };
+      %\node[rectangle callout, fill=gray!10, text width=3.2cm, font=\tiny,
+      %      callout absolute pointer=(m1.east)] at ($(m1.east)+(2cm,0cm)$)
+      %{
+      %  
+      %};
+      \node[rectangle, font=\small, below=.75em of m1] (m2)
+      {
+        \textcolor{colT}{Teplo} -- konečné diference
+      };
+      \node[rectangle, font=\small, below=.75em of m2] (m3)
+      {        
+        \textcolor{colF}{Proudění} -- konečné objemy
+      };
+      \node[rectangle, font=\small, below=.75em of m3] (m4)
+      {  
+        \textcolor{colM}{Termoelasticita} -- konečné prvky (FEM)
+      };
+      \end{tikzpicture}
+    }
     \begin{itemize}\compresslist
-      \item FEM
-      \item Nodal
+    	\item[\plus] využití existujících ověřených kódů
+    	\item[\minus] netriviální datové přenosy mezi kódy
+    	\item[\minus] ztráta nelinearity řešeného problému
     \end{itemize}
-    \vspace{8em}
+    \begin{minipage}{\linewidth}
+      \centering
+      \input{splitting.tex}
+      \vspace{0.25em}
+    \end{minipage}
+  %\end{minipage}
+  %\end{multicols*}
+    %\mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\[.2em]
+    %\centering algoritmus\\[6em]
   }
-
+  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Výsledky}{name=vysledky,column=1,span=2,below=nodal}{
+  \headerbox{Jednolité řešení sdružené úlohy}{name=sdruzene,column=1,span=1,below=motivace}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    {
-      Následující obrázky ukazují ustálené rozložení neutronového toku pro konkrétní konfiguraci aktivní zóny reaktoru VVER-1000, 1m nad dnem zóny. 
-      Kompletní 3D nodální výpočet včetně rekonstrukce trval na moderním multiprocesorovém systému \textbf{několik vteřin}.
-    }\\[.5em]
-    \noindent\makebox[\textwidth]{    
+%  \begin{multicols*}{2}
+    \begin{minipage}{\columnwidth}
+    $\bullet$~Jednotná diskretizace všech modelů:
+    \Muline{
+      \bfseries
+      \textcolor{colN}{F}
+      \textcolor{colT}{E}
+      \textcolor{colF}{M}
+    }\\
+    %\tikz[baseline]\node[circle, draw, anchor=base, text=blue, inner sep=.5pt] {+};
+    $\bullet$~Řešení nelineární soustavy: $\bF(\bY)=\bO$
+    \end{minipage}
+    \begin{minipage}{\columnwidth}
+      \centering
+      \vspace{.5em}
+      \input{newton.tex}
+    \end{minipage}
+    \begin{itemize}\compresslist
+    	\item[\plus] flexib. prostorová i časová diskretizace
+    	\item[\plus] snadné přidružení dalších modelů
+    	\item[\plus] řešení respektuje nelinearitu úlohy
+    	\item[\minus] zvýšení počtu neznámých $\imply$ potřeba
+    	\begin{itemize}\compresslist
+      	\item[$\bullet$] efektivních řešičů soustav
+      	\item[$\bullet$] efektivní automatické adaptivity
+      \end{itemize}   
+    \end{itemize}
+  %\end{minipage}
+  %\mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\[.1em]
+%  \columnbreak
+%  \end{multicols*}
+  }
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Ukázka praktického použití FEM}{name=hermes,column=2,span=1,below=motivace}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \tikzstyle{popis} = [font=\footnotesize, text badly centered]
+    \begin{minipage}{\linewidth}
+      $\bullet$~Řešeno balíkem Hermes (\blueuline{\textcolor{Blue}{http://hpfem.org})}\\[.65em]
+      $\bullet$~VHTR -- 4-grupový výpočet, kritická úloha
+    \end{minipage}\\[1em]
+    \noindent\makebox[\textwidth]{ 
       \begin{tikzpicture}[auto]
-         \node  at (0,0)              (zona)    {\includegraphics[width=0.37\linewidth]{edu02}};
-         \node  [right=1.5cm of zona]   (kazeta)  {\includegraphics[width=0.37\linewidth]{edu02}};
+         \node  at (0,0)                (flux4)  {\includegraphics[width=0.5\linewidth]{res/neutronics-4-group/flux4}};
+         \node  [right=.8cm of flux4]  (mesh4)  {\includegraphics[width=0.37\linewidth]{res/neutronics-4-group/mesh4}};
          \draw
           let
-            \p1 = (zona.south west),
-            \p2 = (zona.south east)
+            \p1 = (flux4.south west),
+            \p2 = (flux4.south east)
           in
-            node [below=.5cm of zona.south, text width={.9*(\x2-\x1)}, font=\footnotesize] (zonalbl) {Neutronový tok v $\frac16$ symetrie reaktoru};
+            node [below=.4cm of flux4.south, popis, text width={.9*(\x2-\x1)}] (flux4lbl) {
+              $\varphi_{\mathrm{thermal}}$
+            };
             
         \draw
           let 
-            \p1 = (kazeta.south),
-            \p2 = (zonalbl)
+            \p1 = (mesh4.south),
+            \p2 = (flux4lbl)
           in
-            (\x1,\y2) node [font=\footnotesize] (kazetalbl) {Neutronový tok ve vybrané kazetě};
+            (\x1,\y2) node [font=\footnotesize, popis] (mesh4lbl) {
+              výsledná výpočetní síť
+            };
       \end{tikzpicture}
     }
-    \vspace{-0.25cm}
-    \begin{center} Hermes \end{center}
+    \begin{minipage}{\linewidth}
+      \vspace{0.5cm}
+      $\bullet$~Laminární nestlačitelné proudění (NS)
+    \end{minipage}\\[1em]
+    \noindent\makebox[\textwidth]{ 
+      \begin{tikzpicture}[auto]
+         \node  at (0,0)               (velocity)  {\includegraphics[width=\linewidth]{res/ns/vel}};
+         
+         \draw
+          let
+            \p1 = (velocity.south west),
+            \p2 = (velocity.south east)
+          in
+            node [below=.2cm of velocity.south, popis, text width={.9*(\x2-\x1)}] (velocitylbl) {
+              rychlostní pole, $t = 20$\;s, spojitá aproximace
+            };
+         
+        \node  [below=.85cm of velocity]  (pressure)  {\includegraphics[width=\linewidth]{res/ns/p}};   
+        \draw
+          let
+            \p1 = (pressure.south west),
+            \p2 = (pressure.south east)
+          in
+            node [below=.2cm of pressure.south, popis, text width={.9*(\x2-\x1)}] (pressurelbl) {
+              tlakové pole, $t = 20$\;s, nespojitá aproximace
+            };
+      \end{tikzpicture}
+    }
   }
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  \headerbox{Otevřené problémy}{name=problemy,column=1,below=vysledky,span=2}{
+  \headerbox{Neutronika/teplo -- slabá formulace}{name=model,column=0,span=2,below=sdruzene}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%    \begin{itemize}
-%      \item Problem 1
-%      \item Problem 2
-%      \item Problem 3
-%    \end{itemize}    
-%  }  
+  %\hspace*{.5em}\begin{minipage}{.95\linewidth}
+  \begin{itemize}\compresslist
+    %$\bullet$ 
+    \item Implicitní Eulerova metoda:~ $\displaystyle\pd{f}{t} \approx \frac{f\it{r}-f\it{r-1}}{\dt}$, ~$f\it{r} \stackrel{\mathrm{ozn.}}{=} f(\bx,t\it{r})$\\[.1em]
+    %$\bullet$ 
+    \item v čase $t^s$:~
+  %\end{minipage}
+    $\displaystyle
+    \begin{aligned}[t]
+      \bF\it{s}(\bY\it{s}) &= \vvec{\bF\it{s}_\flx(\bY\it{s})}{\bF\it{s}_T(\bY\it{s})} = \bO,\quad
+      \bY\it{s} = \vvec{\bY\it{s}_\flx}{\bY\it{s}_T},\quad 
+      \begin{array}{ll}
+        \bY\it{s}_\flx &\mbox{reprezentuje }\ \flx\it{s}\stackrel{\mathrm{ozn.}}{=} \flx(\bx,t^s)\\
+        \bY\it{s}_T &\mbox{reprezentuje }\ T\it{s}\stackrel{\mathrm{ozn.}}{=} T(\bx,t^s)
+      \end{array}
+      \end{aligned}\\[.65em]\hspace*{1em}
+    \begin{aligned}
+      F_{\flx,i}\it{s}(\bY) &= \vint{\left[\frac{1}{v\dt}\left(\flx\it{s} - \flx\it{s-1}\right)\testN + D\grad \flx\it{s}\grad\testN
+                            +\bigl(\Sigma_r(T\it{s})-\nu\Sigma_f\bigr)\flx\it{s}\testN - q_\flx\testN \right]}\\[.15em]
+      F_{T,j}\it{s}(\bY) &= \vint{\left[\frac{\rho c_p}{\dt}\left(T\it{s} - T\it{s-1}\right)\testT + k(T\it{s})\grad T\it{s}\grad\testT
+                            - \kappa\Sigma_f\flx\it{s}\testT - q_T\testT \right]}
+    \end{aligned}
+    $\\[.6em]
+    s vhodně vybranými funkcemi $\{\testN\}$, $\{\testT\}$.
+  \end{itemize}
+  \vspace{.1em}
+  }
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Řešení ukázkové úlohy\hspace{1.75em} -- adaptace v čase $t_{\mathrm{fin}}=3$\;s:\hspace{7.25em} -- porovnání s přesným řeš.:}{name=reseni,column=0,below=model,span=3}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %\vspace*{-.5em}
+  \begin{tikzpicture}[auto]
+    \node  at (0,0) (Philbl) {$\flx$: };
+    \node  [right=.3cm of Philbl] (Phi1)  {\includegraphics[width=.12\linewidth]{res/neutronics-heat-conduction/Phi1}};
+    \node  [below=.11cm of Phi1] (T1)  {\includegraphics[width=.12\linewidth]{res/neutronics-heat-conduction/T1}};
+    \node  [left=.3cm of T1] (Tlbl) {$T$: };
+    \node  [right=.75cm of Phi1] (Phi2)  {\includegraphics[width=.12\linewidth]{res/neutronics-heat-conduction/Phi2}};
+    \node  [below=.13cm of Phi2] (T2)  {\includegraphics[width=.12\linewidth]{res/neutronics-heat-conduction/T2}};
+    \node  [right=.75cm of Phi2] (Phi3)  {\includegraphics[width=.11\linewidth]{res/neutronics-heat-conduction/Phi3}};
+    \node  [below=.15cm of Phi3] (T3)  {\includegraphics[width=.12\linewidth]{res/neutronics-heat-conduction/T3}};
+    \node  [right=.75cm of Phi3] (Phi4)  {\includegraphics[width=.11\linewidth]{res/neutronics-heat-conduction/Phi4}};
+    \node  [below=.15cm of Phi4] (T4)  {\includegraphics[width=.12\linewidth]{res/neutronics-heat-conduction/T4}};
+    \node  [right=.75cm of Phi4] (Phi5)  {\includegraphics[width=.11\linewidth]{res/neutronics-heat-conduction/Phi5}};
+    \node  [below=.15cm of Phi5] (T5)  {\includegraphics[width=.12\linewidth]{res/neutronics-heat-conduction/T5}};
+    \node  [right=1.75cm of Phi5] (PhiErr)  {\includegraphics[width=.185\linewidth]{res/neutronics-heat-conduction/PhiErr}};        
+    \node  [below=.15cm of PhiErr] (TErr)  {\includegraphics[width=.185\linewidth]{res/neutronics-heat-conduction/TErr}};    
+  \end{tikzpicture}
+  }  
 \end{poster}%
 \end{document}

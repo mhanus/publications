@@ -1,0 +1,39 @@
+\begin{frame}[t]
+	\frametitle{Hermes 2D} 
+	\vspace*{.3cm}
+	\begin{itemize}
+		\item<1-> Open source package for rapid development of efficient $hp$-FEM solvers
+		\item<2-> C++ core, Python interface
+		\item<3-> Intuitive object-oriented design reflecting the underlying math\\[.3em]
+		\only<3>{
+		\begin{tikzpicture}
+			\node[mybox, inner ysep=2ex, inner xsep=2ex] (work) {%
+				\begin{minipage}{.9\textwidth}\centering
+					\small
+					\begin{enumerate}
+						\item "Draw" the domain (define vertices, edges, elements, b.c.'s)
+						\item Construct meshes
+						\item Define appropriate spaces
+						\item Add weak forms
+						\item Special multi-mesh assembly of system matrices
+						\item Choose a linear solver (UMFPACK, Trilinos, etc.)
+						\item Set the refinement strategy
+						\item Perfom the adaptation
+					\end{enumerate}
+				\end{minipage}
+			};
+		\node[fancytitle] (worktitle) at (work.north) {\small Typical workflow};
+		\end{tikzpicture}
+		}
+		\item<4-> Advanced algorithms for hp-adaptivity
+		\item<5-> Aims at multi-component/multi-physics problems 
+	\end{itemize}
+	\vspace{2cm} \hrule width 5.1cm \vspace{-0.1cm}
+	\begin{thebibliography}{\textwidth} 
+	  \beamertemplatearticlebibitems
+		\bibitem[Sol]{Solin}
+		\footnotesize{P. Solin et al.}
+		\newblock \scriptsize{Hermes - Higher-Order Modular Finite Element System (User's Guide)}
+		\newblock \color{Black}\scriptsize{http://hpfem.org/}      
+	\end{thebibliography}
+\end{frame}

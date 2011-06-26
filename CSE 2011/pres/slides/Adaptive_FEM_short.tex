@@ -1,0 +1,28 @@
+\begin{frame}[t]
+	\frametitle{Adaptive error control}
+	  \vspace*{.75cm}
+		  \begin{itemize}
+		    \item Estimate error \emph{a-posteriori} from the computed solution
+		      \item<1-> Various kinds of error estimation techniques (Ainsworth \& Oden)
+			  \item<2-> Practical and universal estimate for $hp$-adaptivity based on a\\ \emph{reference solution}~$\flfl_{\rf}\approx \flfl$\\[.5em]
+%			    \begin{itemize}
+%				    \item<3-> obtain local (per-element) error measure
+%				    \item<3-> refine elements with highest error
+%				        \begin{itemize}
+%				            \item refinement type determined by incurring projection error of the reference solution onto a corresponding polynomial space
+%				        \end{itemize}    
+%				  \end{itemize}
+
+			  \item<3-> error measure should take into account error introduced by all solution components (groups) and their interactions
+			  \item<4-> neglect intergroup interactions to obtain a norm\\[1em]
+		      \begin{tikzpicture}
+			      \node[mybox, inner ysep=1ex] (err) {
+				      \begin{minipage}[t]{.8\textwidth}\centering
+					      $\enorm{\flfl}^2 = \sum_g\int_\dom D^g\bigl(\nabla\fl^g\bigr)^2 + \Sigma_r^g\bigl(\fl^g\bigr)^2\,\d{\bx}$
+					      \only<5->{\\[.5em]
+					      $\enorm{e_{hp}}\approx\enorm{\flfl_{hp}-\flfl_{\rf}}$}
+				      \end{minipage}
+			      };
+		      \end{tikzpicture}
+		  \end{itemize}
+\end{frame}

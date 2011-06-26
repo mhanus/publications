@@ -1,0 +1,87 @@
+\begin{frame}[t]
+	\frametitle{Nodal method -- matrix formulation} 
+	\centering
+	\eqnboxnamedc[.9\textwidth]{eqns}
+	{
+		\only<1>{\small Nodal scheme (solve for each node $\V_n$)}
+		\only<2->{\small FVM on a coarse mesh (a.k.a. CMFD)}
+	}
+	{
+		\only<1>{
+			\begin{overlayarea}{\linewidth}{1.1cm}
+				\centering	
+					$\vphantom{\sum_a^b}
+					\sum_{r} \hat{j}_{n\mid r}^g+{\Sigma_{rn}^g}\hat\fl_n^g - \suma{\Sigma_{sn}^{gg'}}\hat\fl_n^{g'} - \chi^g\!\sum_{g'=1}\nu\Sigma_{fn}^{g'}\hat\fl_n^{g'}
+					=	Q_n^g$
+			\end{overlayarea}
+		}
+		\only<2->{
+			\begin{overlayarea}{\linewidth}{.4cm}
+%			\vspace*{.5em}
+			\centering
+			    $(\dkb{\MM} + \dkr{\DD})\flfl = \QQ$
+			\end{overlayarea}
+		}
+	}
+	
+	\begin{tikzpicture}[overlay]
+		\node[mybox, inner sep = 1ex, below=2ex of eqns.south, anchor=north] (box1) {
+			\begin{minipage}[c]{.7\textwidth}
+				\emph{NOD:} 
+					$\hat{j}_{n\mid r} \approx -\bn\cdot\Dnl\nabla \!\!\left.\hat\fl_n(x,y)\right\vert_{n\mid r}$\\
+				\only<3->{\hbox{}\hfill\dkr{$\Updownarrow$}\hfill\hbox{}\\}
+				\only<2->{
+					\emph{FVM:} $j_{n\mid r} \approx \dkb{-\Dnl}(\phi_r - \phi_n) + 
+						\only<2>{
+							\dkr{\widehat D_{n\mid r}}
+						}
+						\only<3->{	
+							\tikz[baseline] \node [outer sep=8pt,inner sep=2pt, anchor=text,draw=dkred,thin,rounded corners] {$\dkr{\widehat D_{n\mid r}}$};
+						}
+						(\fl_n + \fl_r)$
+				}
+			\end{minipage}
+		};		
+		\node[inner sep = 0pt, below left=2.0ex and 1.5cm of box1.south west, anchor=north west] (box3) {
+			\begin{minipage}[t]{\textwidth}\small
+				\begin{itemize} 
+					\only<1>{
+					 \item \structure{NOD}al method: node by node, coupled by continuity of $\hat j_{n\mid r}$, $\hat \fl_{n\mid r}$
+					 \item possible formulation as a single, banded matrix problem
+					}
+%					\item<2-> Combination with FVM possible%\vspace{-.2em}
+%					\begin{itemize}
+          \only<2->{
+						\item FVM as an acceleration of NOD 
+						\item NOD as a correction of coarse-mesh FVM discretization\only<2>{\\
+										\structure{$\Ra$} nonlinear method coupled by factors $\dkr{\hat D_{n\mid r}}$:}
+					}
+%					\end{itemize}
+				\end{itemize}
+			\end{minipage}
+		};
+
+        \only<2->{
+        \node[below=4pt of box3.south, anchor=north, inner ysep=0pt] (boxxxx) {%
+            \begin{minipage}[t]{.7\textwidth}\centering
+                $\dkr{\widehat D_{n\mid r}} = \frac{\hat{j}_{n\mid r} + \Dnl(\phi_r - \phi_n)}{\phi_n + \phi_r}$ 
+            \end{minipage}
+        };}
+%        \only<3->{
+%        \node[mybox, below=1.4em of box3.south, anchor=north, inner ysep=0pt] (boxx) {%
+%            \begin{minipage}[t]{.7\textwidth}\centering
+%                $$
+%                \begin{aligned}
+%                    \dkb{\MM}\flfl^{(n+\frac12)} = \QQ - \dkr{\DD}\flfl^{(n)}\\
+%                    \dkr{\DD}\flfl^{(n+1)} = \QQ - \dkb{\MM}\flfl^{(n+\frac12)}
+%                \end{aligned}
+%                $$\\[.1em]
+%            \end{minipage}
+%        };
+%        \node[fancytitle] (boxxt) at (boxx.north) {\small Iterative form};
+%        }
+        
+	\end{tikzpicture}
+		
+	%TODO: vlastnosti matic
+\end{frame}	

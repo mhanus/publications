@@ -1,0 +1,34 @@
+\begin{frame}[t]
+	\frametitle{Apriori analysis}
+	\begin{tikzpicture}
+		\node[mybox,inner ysep=1ex] (err) {
+			\begin{minipage}[t]{.925\textwidth}\vspace{.3cm}\centering
+				$\norm[\VV]{\fl}^2 = \sum_{g=1}^G \alt<1>{\norm[H^1(\dom)]{\fl^g}^2}{\alert<2>{\norm[1]{\fl^g}^2}}$
+				\only<3->{\\[.5em]
+					$\norm[\VV]{\flfl - \flfl_{hp}} \leq C \inf_{\vv_{hp}\in \VV_{hp}} \norm[\VV]{\flfl-\alert<4>{\vv_{hp}}}\only<4->{\leq \widetilde{C}\norm[\VV]{\flfl-\alert<4>{\Pi_{hp}\flfl}}}$\only<4->{\\[.5em]\ltb[<4>]{
+				$\Pi_{hp} : \VV \to \VV_{hp}$}}
+				} 
+			\end{minipage}
+		};
+		\node[fancytitle, inner sep=2pt] at (err.north) {\only<1>{Norm in $\VV$}\only<2>{Norm in $\VV$}\only<3->{ Approximation error \only<3>{(C{\' e}a's lemma)}}};
+	\end{tikzpicture}
+	\only<5->{		
+	\begin{itemize}
+		\item apriori error estimates can be obtained by using interpolation estimates in Sobolev spaces
+		\item<6-> \alert{require regularity of the solution}
+		\item<6-> \alert{proportionality constants difficult to compute}
+	\end{itemize}
+	\centering
+		\eqnboxc[.7\textwidth]{$\begin{aligned}
+			\norm[1]{\fl-\fl_{hp}} &\leq C h^{p}\norm[1]{\fl}\\
+			\norm[0]{\fl-\fl_{hp}} &\leq C h^{p+1}\norm[1]{\fl}
+			\end{aligned}$
+		}
+	}
+	\uncover<6->{
+	\begin{itemize}
+		\item \alert{require regularity of the solution}
+		\item \alert{proportionality constants difficult to compute}
+	\end{itemize}
+	}
+\end{frame}

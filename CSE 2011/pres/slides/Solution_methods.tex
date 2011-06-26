@@ -1,0 +1,52 @@
+\begin{frame}[c]
+	\frametitle{Nodal method \& adaptive FEM ?}
+	\begin{itemize}
+	    \item Various kinds of error estimation techniques (Ainsworth \& Oden)
+	        \begin{itemize}
+	            \item \emph{Hierarchic error indicators}
+	        \end{itemize}
+	\end{itemize}
+	
+	\begin{tikzpicture}
+			\node[mybox, inner ysep=1.2ex, inner xsep=0ex] (Model) {%
+				\begin{minipage}{1.03\textwidth}\centering
+					\small
+          \begin{itemize}
+            \item	Find $\flfl \in \VV:\quad \A(\flfl,\vv) = \L(\vv),\quad \forall \vv\in \VV$
+            \item Let $\VV$ represent a low order FE space (e.g. $p = 1$)
+          \end{itemize}
+				\end{minipage}
+			};
+		\node[fancytitle] (Modelt) at (Model.north) {\small Original problem};
+
+  \uncover<2->{
+			\node[mybox, below=.5cm of Model.south, anchor=north, inner ysep=1.2ex, inner xsep=0ex] (Method) {%
+				\begin{minipage}{1.03\textwidth}\centering
+					\small
+					\begin{itemize}
+            \item Let $\overline\VV = \VV \oplus \EE$
+            \item Looking for the solution $\overline\flfl = \flfl + \mathbf{e}$ in 
+                  the higher order FE space $\overline\VV$
+            \item $\mathbf{e}$ ... component of $\overline\flfl$ lying in $\EE$
+                \begin{itemize}
+                    \item if the \emph{saturation assumption} holds, provides a good
+                  approximation to the true error for $\flfl\in \VV$
+                \end{itemize}
+          \end{itemize}
+				\end{minipage}
+			};
+		\node[fancytitle] (Methodt) at (Method.north) {\small Hierarchic space decomposition};
+				}
+	\end{tikzpicture}    
+
+	
+		\vspace{.15cm}\color{Black}\hrule width 5.1cm
+		\begin{thebibliography}{\textwidth} 
+			\beamertemplatearticlebibitems
+			\bibitem[EST]{EST}
+			\footnotesize{M. Ainsworth and J. T. Oden},
+			\newblock \scriptsize{A-posteriori error estimation in finite element analysis}
+			\newblock {\scriptsize \color{white!80!black}John Wiley \& Sons, Inc., 2000}
+		\end{thebibliography}		
+	
+\end{frame}

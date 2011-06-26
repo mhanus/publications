@@ -1,0 +1,38 @@
+\begin{frame}[c]
+	\frametitle{Adaptive FEM}
+			\begin{itemize}
+				\item practical estimate for $hp$-adaptivity based on a \alert{reference solution} $\fl_{\rf}\approx \fl$	
+			\end{itemize}
+	\begin{tikzpicture}
+		\draw node[mybox,outer sep=2pt] (afem) {
+			\begin{minipage}[c]{\textwidth}\small
+				\begin{enumerate}
+				 	\item approximate $\flfl$ on current set of spaces $V_{hp}^g$: $\flfl_{hp}$
+				 	\item global refinement: $V_{hp}^g \to V_{h/2,p+1}^g$, obtain $\flfl_{h/2,p+1}$
+				 	\item set $\flfl_{\rf} = \flfl_{h/2,p+1}$, compute $\eta^g_n = \norm{\fl_{hp}^g-\fl^g_{\rf}}_{n,g}^2$ for each el. $K_n^g$
+				 	\item accumulate $\eta^g_n$ from all meshes $\tau^g$ to obtain $E_{hp}=\tzterm{norm}{\norm{\flfl_{hp}-\flfl_{\rf}}}$
+%				 				~~\gray{\footnotesize (note that $\norm{E_{hp}}^2 = \sum_g\sum_{K_n^g\in\tau^g}\eta^g_n$ where $\eta^g_n = \norm{\fl_{hp}^g-\fl^g_{\rf}}_{K_n^g}^2$)}
+%                \gray{\footnotesize (by accumulating error estimates from all $K_n^g\in\tau^g$)}
+				 	\item stop if $\frac{E_{hp}}{\norm{\flfl_{\rf}}} \leq TOL$, otherwise
+				 	\item mark elements $K_n^g$ for which $\frac{\eta^g_n}{\tzterm{normelem}{\norm[n,g]{\fl_{\rf}^g}}} > \theta\max_{n',g'}\frac{\eta^{g'}_{n'}}{\norm[n',g']{\fl_{\rf}^{g'}}}$
+				 	\item decide refinement strategy ($h$-, $p$-, iso/anisotropic, etc.)  
+				 	\item refine marked elements ($V_{hp}^g \to V_{h'p'}^g$)
+				\end{enumerate}
+			\end{minipage}
+		};
+		
+		\only<2-3>{
+			\node[below left=-.1cm and 1.1cm of afem.east, 
+						fill=eqbgcolor, text=dkgreen, 
+						draw, drop shadow={opacity=.5,fill=structure!50!black},font=\scriptsize] (desc) {
+							\alt<2>{$\enorm{\cdot}$ or $\norm[E]{\cdot}$}{norm in $H^1(K_n^g)$}
+			};
+			\alt<2>{ 
+				\draw[->,dkgreen,opacity=.5,thick] (desc) -- (norm.south west);	
+			}{
+				\draw[->,dkgreen,opacity=.5,thick] (desc) -- (normelem.north east);	
+			}
+		}
+	\end{tikzpicture}
+\end{frame}
+

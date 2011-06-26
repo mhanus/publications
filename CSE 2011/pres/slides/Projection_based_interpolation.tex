@@ -1,0 +1,15 @@
+\begin{frame}[c]
+	\frametitle{Projection based interpolation}
+	\begin{itemize}\addtolength{\itemsep}{.5\baselineskip}
+		\item coarse mesh solution (\structure{step 1}) can be omitted in subsequent adaptation steps if \alert{projection based interpolation} is used:\\[1em]
+		\eqnboxc[.8\textwidth]{\vspace{.4em}
+			\centering$\alert{\flfl_{\rf}} \alert{= \Pi_{hp}\flfl_{h/2,p+1}}$, ~~ $\Pi_{hp} : \VV \to \VV_{hp}$
+			\shorten{0em}{-1em}
+			\begin{align*}
+				\norm{\flfl - \flfl_{hp}} \leq C\norm{\flfl_{h/2,p+1}-\Pi_{hp}\flfl_{h/2,p+1}} = C\sum_g\sum_{K_n^g}\widetilde{\eta}^g_n
+			\end{align*}
+			\lengthen
+		}
+		\item the group-wise error indicator \dkg{$$\widetilde{\eta}^g_n = \left\vert\left\vert{\fl^g_{h/2,p+1}-\Pi^g_{hp}\fl^g_{h/2,p+1}}\right\vert\right\vert_{g,n}$$} is completely defined by the globally refined (reference) solution
+	\end{itemize}
+\end{frame}

@@ -1,0 +1,21 @@
+\begin{frame}
+	\frametitle{Finite volume method -- eigenvalue problem} 
+	\begin{center}
+		\eqnboxnamedc[.7\textwidth]{eqns}
+		{
+			Reactor criticality calculation
+		}
+		{
+			$\MM\flfl = \frac{1}{\keff}\FF\flfl$
+		}\\[2em]
+		\eqnboxnamedc[.7\textwidth]{pi}{\textit{Source iteration}}{
+			\shorten{-.3cm}{-.5cm}
+			\begin{align*}
+				 \MM\flfl^{(n)} &= \color{dkblue}\frac{1}{\keff^{(n-1)}}\FF\flfl^{(n-1)} \quad \mbox{ \color{dkblue}(fixed source $\mathbf{S}_f^{(n-1)}$) }\\
+				 \keff^{(n)} &= \keff^{(n-1)} \frac{\norm{\FF\flfl^{(n)}}}{\norm{\FF\flfl^{(n-1)}}}
+			\end{align*}
+			\lengthen
+		}
+	\end{center}		
+\end{frame}
+

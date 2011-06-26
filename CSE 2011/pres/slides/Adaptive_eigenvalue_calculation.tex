@@ -1,0 +1,37 @@
+\begin{frame}[t]
+  \frametitle{Adaptive eigenvalue calculations}
+  \vspace*{.85cm}
+	\begin{itemize}
+	  \item Two possible strategies:
+	    \begin{enumerate}
+	    	\item Outer source iteration \structure{+} inner mesh refinement iterations \
+	    	  \only<2->{
+	    	    \begin{itemize}
+	    	     	\item related to the time-dep. problem of approaching to a steady state
+	    	     	\item derefinement would be needed due to inaccurate initial source terms (due to inaccurate $\keff$)
+	    	     \end{itemize} 
+	    	   }         
+	    	\item Outer mesh refinement iteration \structure{+} inner source iterations
+	    	  \only<2->{
+	    	    \begin{itemize}
+  	    	    \item easier implementation
+	    	      \item amenable for traditional source iteration acceleration methods
+		          \item more reasonable for goal-oriented adaptivity aimed at the physically interesting quantities ($\keff$, assembly powers)
+	    	     \end{itemize} 
+	    	   }
+	    \end{enumerate}
+	\end{itemize}
+	\alt<1>{\vspace*{3.35cm}}{\vspace*{.9cm}}\color{Black}\hrule width 5.1cm
+	\begin{thebibliography}{\textwidth} 
+	  \beamertemplatearticlebibitems
+		\bibitem[Wang]{Wang}
+		\footnotesize{Yaqi Wang},
+		\newblock \scriptsize{HP-mesh adaptation for 1-D multigroup neutron diffusion problems}    
+		\newblock \scriptsize{Master's thesis, Texas A\&M University, 2006}
+	\end{thebibliography}
+\end{frame}
+
+\begin{frame}[c]
+  \frametitle{\textit{"Outer-adaptation, inner-eigenvalue"}}
+	\input{diagrams/SI_out.tikz}
+\end{frame}

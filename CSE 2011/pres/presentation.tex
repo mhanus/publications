@@ -1,0 +1,284 @@
+\documentclass[professionalfonts, xcolor=dvipsnames, mathsans, 11pt, uncompressed]{beamer}
+
+%\usepackage[czech]{babel}
+%\usepackage[utf8]{inputenc}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,shadows,calc}
+\usepackage{gnuplot-lua-tikz}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{cancel}
+\usepackage{mathtools}
+\usepackage{floatflt}
+\usepackage{colortbl}
+\usepackage{wasysym}
+\usepackage{dcolumn}
+\usepackage{units}
+
+\usepackage{atbeginend}
+\usepackage{graphicx}
+
+\usepackage{ifthen}
+
+
+\tikzstyle{mybox} = [draw=eqframecolor, fill=eqbgcolor, thick,
+    rectangle, rounded corners, inner xsep=2pt, outer sep=0pt]
+\tikzstyle{assumptions} = [draw=eqframecolor, fill=assumbgcolor, thick,
+    rectangle, rounded corners, inner ysep=3ex, outer sep=0pt]
+\tikzstyle{claims} = [draw=eqframecolor, fill=claimbgcolor, thick,
+    rectangle, rounded corners, inner ysep=2ex, outer sep=1pt]
+\tikzstyle{definebox} = [draw=eqframecolor, fill=defbgcolor, thick,
+    rectangle, rounded corners, inner sep=1ex, outer sep=0pt, font=\small]        
+\tikzstyle{fancytitle} =[fill=eqtitlebgcolor, text=eqtitlecolor, rounded corners, inner ysep=2pt]
+\tikzstyle{term} = [inner sep=0pt,outer sep=0pt,anchor=base]
+\tikzstyle{background grid}=[step=.1cm]
+
+\newcommand{\eqnboxnamedl}[4][.8\textwidth]{%
+	\begin{tikzpicture}[baseline]
+		\node[mybox, inner ysep=2ex] (#2) {%
+			\begin{minipage}[t]{#1}
+				#4
+			\end{minipage}
+		};
+	\node[fancytitle,inner sep=2pt, right=10pt] at (#2.north west) {#3};
+	\end{tikzpicture}
+}
+\newcommand{\ddd}[4][]{%
+	\node[definebox,#1] (#3) {%
+		\begin{minipage}[t]{#2}
+			{\color{structure}Define\\[-2ex]\hrule}
+			#4
+		\end{minipage}
+	};
+}
+\newcommand{\eqnboxnamedc}[4][.8\textwidth]{%
+	\begin{tikzpicture}[baseline]
+		\node[mybox, inner ysep=2ex, inner xsep=2ex] (#2) {%
+			\begin{minipage}{#1}\centering
+				#4
+			\end{minipage}
+		};
+	\node[fancytitle] (#2title) at (#2.north) {#3};
+	\end{tikzpicture}
+}
+\newcommand{\eqnboxc}[2][.8\textwidth]{%
+	\begin{tikzpicture}[baseline]
+		\node[mybox] (box) {%
+			\begin{minipage}[t]{#1}\centering
+				#2
+			\end{minipage}
+		};
+	\end{tikzpicture}
+}
+
+\newcommand{\bomega}{\ensuremath{\mathbf{\Omega}}}
+\newcommand{\tinydot}{\mbox{\tiny{\textbullet}}}
+\newcommand{\keff}{\ensuremath{k_{\mathrm{eff}}}}
+\newcommand{\bx}{\ensuremath{\mathbf{x}}}
+\newcommand{\bz}{\ensuremath{\mathbf{z}}}
+\newcommand{\bn}{\ensuremath{\mathbf{n}}}
+\renewcommand{\d}[1]{\ensuremath{\mathrm{d}#1\,}}
+\newcommand{\dom}{\ensuremath{\Omega}}
+\newcommand{\bnd}{\ensuremath{\partial\dom}}
+\newcommand{\pd}[3][]{\ensuremath{\frac{\partial^{#1}#2}{\partial #3^{#1}}}}
+\newcommand{\T}{\ensuremath{\mathcal{T}}}
+\newcommand{\V}{\ensuremath{\mathcal{V}}}
+\newcommand{\face}[1][]{\ensuremath{\Gamma\ifthenelse{\equal{#1}{}}{}{_{\mathrm{#1}}}}}
+\newcommand{\on}[1]{\ensuremath{\ \mbox{on } \face[#1]}}
+\newcommand{\abs}[1]{\ensuremath{\left\vert#1\right\vert}}
+\newcommand{\Ra}{\ensuremath{\structure{\Rightarrow}}}
+
+\newcommand{\ra}{\ensuremath{\!\rightarrow\!}}
+\newcommand{\intv}[2][\d{\br}]{\ensuremath{\iiint_{\V_i}{#2}\,{#1}}}
+\newcommand{\xint}[3]{\int_{#1}^{#2}{#3}\,\d{x}}
+
+\newcommand{\Dnl}{\ensuremath{\widetilde{D}_{n\mid r}}}
+\newcommand{\nod}[1][]{\ensuremath{^{\ifthenelse{\equal{#1}{}}{}{#1,}\mathrm{NOD}}}}
+\newcommand{\cmfd}[1][]{\ensuremath{^{\ifthenelse{\equal{#1}{}}{}{#1,}\mathrm{CMFD}}}}
+
+\newcommand{\fl}{\ensuremath{\phi}}
+\newcommand{\afl}{\ensuremath{\psi}}
+\newcommand{\flfl}{\ensuremath{\pmb{\phi}}}
+\newcommand{\DD}{\ensuremath{\mathbf{D}_{\mathrm{kor}}}}
+\newcommand{\MM}{\ensuremath{\mathbf{M}}}
+\newcommand{\FF}{\ensuremath{\mathbf{F}}}
+\newcommand{\QQ}{\ensuremath{\mathbf{Q}}}
+\newcommand{\VV}{\ensuremath{\mathbb{V}}}
+\newcommand{\EE}{\ensuremath{\mathbb{E}}}
+\newcommand{\vv}{\ensuremath{\mathbf{v}}}
+
+
+\newcommand{\rf}{\ensuremath{\mathrm{ref}}}
+
+\renewcommand{\aa}[1]{\ensuremath{a^{#1}}}
+\newcommand{\bb}[2]{\ensuremath{b^{#1#2}}}
+\renewcommand{\ll}[1]{\ensuremath{l^{#1}}}
+\renewcommand{\a}[3][]{\ensuremath{\ifthenelse{\equal{#1}{}}{a^{#2}(\fl^{#2},v^{#3})}{a^{#2}(\ltb{\fl^{#2}},\ltr{v^{#3}})}}}
+\renewcommand{\b}[3][]{\ensuremath{\ifthenelse{\equal{#1}{}}{b^{#2#3}(\fl^{#3},v^{#2})}{b^{#2#3}(\ltb{\fl^{#3}},\ltr{v^{#2}})}}}
+\renewcommand{\l}[1][]{\ensuremath{l^#1(v^{#1})}}
+\newcommand{\A}{\ensuremath{\mathcal{A}}}
+\renewcommand{\L}{\ensuremath{\ell}}
+\newcommand{\enorm}[1]{\ensuremath{\lvert\lvert\lvert#1\rvert\rvert\rvert}}
+\newcommand{\norm}[2][]{\ensuremath{\lvert\lvert#2\rvert\rvert_{#1}}}
+
+
+\newcommand{\RR}[1][]{\ensuremath{\mathbb{R}^{#1}}}
+\newcommand{\HH}[1][]{\ensuremath{H_{#1}^1(\dom)}}
+\newcommand{\Linf}{\ensuremath{L^\infty(\dom)}}
+\newcommand{\Ltwo}{\ensuremath{L^2(\dom)}}
+
+
+\newcommand{\suma}{\sum_{\makebox[0pt]{${\scriptscriptstyle{g'\neq g}}$}}}
+\newcommand{\io}[1]{\ensuremath{
+	\structure{\stackrel{\mathrm{\tiny #1}}{\dashrightarrow}}}}
+	
+\newcommand{\dkg}[2][]{\bgroup\color#1{dkgreen}#2\egroup}
+\newcommand{\dkb}[2][]{\bgroup\color#1{dkblue}#2\egroup}
+\newcommand{\dkr}[2][]{\bgroup\color#1{dkred}#2\egroup}
+\newcommand{\ltg}[2][]{\bgroup\color#1{green}#2\egroup}
+\newcommand{\ltb}[2][]{\bgroup\color#1{blue}#2\egroup}
+\newcommand{\ltr}[2][]{\bgroup\color#1{red}#2\egroup}
+\newcommand{\gray}[2][]{\bgroup\color#1{black!60}#2\egroup}
+\newcommand{\graysmall}[2][]{\bgroup\small\color#1{black!60}#2\egroup}
+
+
+\newcommand{\mtx}[1]{\bigl[#1\bigr]}
+\newcommand{\vct}[1]{\bigl\{#1\bigr\}}
+
+%\newcolumntype{.}{D{.}{.}{-1}}
+
+\newcommand{\invemph}[2][]{\color{white}#1{#2}\color#1{black}}
+\newcommand{\tzterm}[3][black]{\tikz[baseline]\node[term,#1](#2){$#3$};}
+\newcommand{\tztermrect}[3][.25ex]{%
+	\tzterm[	fill=bg!65!blue,fill opacity=.5,text opacity=1,draw opacity=.5,
+				color=structure.fg!85!bg,thin,draw,rectangle,rounded corners,inner sep=#1]
+		{#2}{#3}
+}
+\newcommand{\tztermdisc}[2]{%
+	\tikz[baseline]\node[term,fill=bg!85!blue,draw,circle,inner sep=0ex,yshift=-.5ex]
+		(#1){$#2$};
+}
+
+\def\shorten#1#2{\bgroup%
+\addtolength\abovedisplayshortskip{#1}%
+\addtolength\abovedisplayskip{#1}%
+\addtolength\belowdisplayshortskip{#2}%
+\addtolength\belowdisplayskip{#2}%
+}
+
+\def\lengthen{\egroup}
+
+%\color{black}
+
+\setbeamercovered{invisible}
+
+\mode<presentation>
+{
+	\usetheme{progressbar}
+	%\usecolortheme{crane}
+}
+%\setlength{\textwidth}{11cm}
+\title[Numerical methods for solving neutron diffusion problems] {
+Comparison of Some Aspects of Nodal and \textit{hp}FEM Methods for Nuclear Reactor Simulation}
+
+\author{\parbox[t]{4cm}{\hfill Milan Hanu{\v s}\hfill\ \\\hbox{} \hfill{\tiny Dept. of Mathematics, WBU Pilsen}\hfill\hbox{}\\[.6em]}}
+
+\date{SIAM Conference on Computational Science and Engineering, Reno, Nevada. March $2^{\mathrm{nd}}$ 2011 }
+
+\tikzstyle{every picture}+=[remember picture]
+
+\AtBeginSection[]{%
+	\addtocounter{framenumber}{-1}
+  	\begin{frame}[t]
+   	\frametitle{Overview}
+   	\tableofcontents[currentsection]
+	\end{frame}
+}
+
+\begin{document}
+
+
+\definecolor{dkblue}{named}{blue}
+\definecolor{dkgreen}{rgb}{0,0.4,0}
+\definecolor{dkred}{rgb}{0.4,0,0}
+\definecolor{dkgrey}{rgb}{0.4,0.4,0.4}
+\definecolor{ltgrey}{rgb}{0.6,0.6,0.6}
+
+\colorlet{shadow}{bg!92!blue}
+\colorlet{rulecolor}{brown!50!yellow!15!black}
+\colorlet{eqbgcolor}{brown!15!yellow!15!white}
+\colorlet{assumbgcolor}{red!70!yellow!15!white}
+\colorlet{claimbgcolor}{green!70!yellow!15!white}
+\colorlet{defbgcolor}{blue!70!yellow!15!white}
+\colorlet{eqtitlecolor}{orange!30}
+\colorlet{eqtitlebgcolor}{structure}
+\colorlet{eqframecolor}{structure}
+\colorlet{bndcolor}{white!35!black}
+
+\everymath{\displaystyle}
+
+
+%===================================== TITLE ===================================
+\progressbaroptions{frametitle=picture-section,titlepage=picture,imagename=images/unilogo}
+
+
+
+\begin{frame}[label=s0]
+	\titlepage
+\end{frame}
+
+
+
+%================================= MAIN CONTENT ===================================
+\progressbaroptions{headline=sections,frametitle=normal}
+
+
+
+
+\begin{frame}[label=s1]
+	\frametitle{Overview}
+	\tableofcontents
+\end{frame}
+
+\section{Mathematical-physical model}
+
+\input{slides/Neutron_physics.tex}
+\input{slides/Governing_equations.tex}
+
+\section{Finite volumes method}
+
+\subsection{Standard FVM}
+\input{slides/FVM.tex}
+\input{slides/FVM_eig.tex}
+\subsection{Nodal method}
+\input{slides/Nodal_method.tex}
+\input{slides/Nodal_method_matrix.tex}
+\input{slides/Nodal_method_pros_cons.tex}
+\subsection{Practical realization}
+\input{slides/HanKa.tex}
+\input{slides/ChaoShatilla_loading.tex}
+\input{slides/HanKa_CS.tex}
+
+\section{Finite elements method}
+
+\input{slides/FEM.tex}	
+\input{slides/Theoretical_remarks.tex}
+\input{slides/Galerkin_approximation.tex}
+\input{slides/Adaptive_FEM_short.tex}
+\input{slides/Adaptive_eigenvalue_calculation.tex}
+\subsection{Practical realization}
+\input{slides/H2D_short.tex}
+\input{slides/Hermes_results.tex}
+
+\section{Some connections}
+\input{slides/Solution_methods.tex}    %!!!!!!!!!!! RENAME
+\input{slides/Core_solution_scheme.tex}
+
+\section{Conclusion}
+\input{slides/Conclusion.tex}
+
+\end{document}

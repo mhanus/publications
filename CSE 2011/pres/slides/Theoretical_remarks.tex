@@ -1,0 +1,55 @@
+\begin{frame}[t]
+	\frametitle{Some theoretical remarks} 
+	\begin{tikzpicture}
+		\draw<1> node[assumptions] (if) {%
+			\begin{minipage}[t]{\textwidth}
+				\begin{itemize}
+					\item $ D^g,\Sigma_r^g,\Sigma_s^{gg'},\nu\Sigma_f^g, Q^g \in L^{\infty}(\dom)$\\\gray{ (boundedness and measurability of physical quantities) }
+					\item $	0 < D^g_0 \leq D^g,\ 0 \leq \Sigma_r^g, \Sigma_s^{gg'}, \nu\Sigma_f^g$, a.e. in $\dom$\\\gray{ (positivity of physical quantities) }
+					\item $ \Sigma_r^g - \nu\Sigma_f^g - \suma\Sigma_s^{gg'} \geq 0$ a.e. in $\dom$ \\
+					\gray{ (net absorption in every group) }
+					\item $	\nu\Sigma_f^G \geq \widetilde{C} > 0,\ \Sigma_s^{g,g-1} \geq C > 0$ a.e. in a nonempty subset of $\dom$ \\
+					\gray{ (presence of a fissioning region) }
+					\item $ 0\leq\chi^g\leq 1, \sum_{g}\chi^g = 1 $ \\
+					\gray{ (def. of fission spectrum) } 
+					\item $ \gamma^g > 0$ if $\face[\gamma] \not= \emptyset$\\
+					\gray{(fraction of incoming to outgoing neutrons through $\face[\gamma]$)}
+					\vspace*{-.5em}
+				\end{itemize}
+			\end{minipage}
+		};
+		\draw<2> node[claims] (then) {
+			\begin{minipage}[c]{\textwidth}\vspace{.1cm}\small
+				\begin{itemize}\addtolength{\itemsep}{-.25\baselineskip}
+					\item \alert{$\A,\ \L$ are bounded}
+					\item the (non-symmetric) matrix
+								$$
+							\begin{bmatrix}
+								\Sigma_r^1 			& -\Sigma_s^{12} 	& \cdots 	& -\Sigma_s^{1G} 	\\
+								-\Sigma_s^{21} 	&  \Sigma_r^2 		& \cdots 	& -\Sigma_s^{2G} 	\\
+								\vdots 					& 	 \vdots 			&	\ddots	& 		\vdots			\\
+								-\Sigma_s^{G1} 	&  -\Sigma_s^{G2}	& \cdots 	& \Sigma_r^{G}
+							\end{bmatrix} - 
+							\begin{bmatrix}
+								\chi^1\nu\Sigma_f^1		& \chi^1\nu\Sigma_f^2 	& \cdots 	& \chi^1\nu\Sigma_f^G 	\\
+								\chi^2\nu\Sigma_f^1		& \chi^2\nu\Sigma_f^2 	& \cdots 	& \chi^2\nu\Sigma_f^G 	\\
+								\vdots 								& 	 \vdots 						&	\ddots	& 		\vdots						\\
+								\chi^G\nu\Sigma_f^1		& \chi^G\nu\Sigma_f^2 	& \cdots 	& \chi^G\nu\Sigma_f^G
+							\end{bmatrix}
+								$$ 
+							is positive definite $\Ra$ \alert{$\A$ is coercive}
+					\end{itemize}
+				 	\structure{$\Ra$} \emph{there exists unique solution $\fl\in \VV$ satisfying $\A(\flfl,\vv) = \L(\vv)\, \forall \vv\in\VV$}\\\gray{ \hphantom{$\Ra$ }(Lax-Milgram lemma) }
+					
+					\begin{itemize}
+						\item the weakly coupled system $(L + H)\fl = \lambda^{-1}F\fl$ is \alert{\textit{cooperative}}
+					\end{itemize}
+					\structure{$\Ra$} \emph{there exists a simple eigenpair $(\lambda_{\mathrm{max}},\fl_{\mathrm{\max}}) \in \RR\times \HH[0]^G$} \\
+					\hphantom{$\Ra$~}\emph{with $\fl_{\mathrm{\max}} \geq 0$ a.e. in $\dom$ (sat. b.c. on $\bnd$) and $\abs{\lambda_{\mathrm{max}}} = \max\abs{\lambda}$}\\
+					\hphantom{$\Ra$~}\gray{(Krein-Rutman theorem, maximum principle) }\vspace*{-.25cm}
+			\end{minipage}
+		};
+		\draw<1> node[fancytitle,inner sep=2pt] at (if.north) {ASSUMPTIONS};
+		\draw<2> node[fancytitle,inner sep=2pt] at (then.north) {CLAIMS};
+	\end{tikzpicture}
+\end{frame}

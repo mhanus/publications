@@ -1,0 +1,34 @@
+\begin{frame}[t]
+	\frametitle{Error control}
+	  \only<1>{\vspace*{2.5cm}
+	    \begin{itemize}
+		    \item {\color{dkred}\textbf{Apriori error estimates}\\
+		          (C{\' e}a's lemma + interpolation estimates in Sobolev spaces)}
+		    \item {\color{dkred}require regularity of the solution}
+		    \item {\color{dkred}proportionality constants difficult to compute in practice}
+	    \end{itemize} 
+	  }
+	  \only<2->{\vspace*{.75cm}
+		  \begin{itemize}
+		    \item \color{dkgreen}\textbf{Aposteriori error estimates}
+			  \item can be extracted from the numerical solution and given data
+			  \item provide local (per-element) estimate
+			  \item provide bounds for the error in user specified norm
+		  \only<3->{
+			  \begin{itemize}
+				  \item \color{dkgreen}error measure should take into account error introduced by all solution components (groups) and their interactions
+				  \item<4-> intergroup interactions can be approximately neglected\\[1em]
+			  \end{itemize}
+			  \begin{tikzpicture}
+				  \node[mybox, inner ysep=1ex] (err) {
+					  \begin{minipage}[t]{.8\textwidth}\centering
+						  $\norm[E]{\flfl}^2 \equiv \A(\flfl,\flfl)$\only<4->{\\[.5em]
+						  $\enorm{\flfl}^2 = \sum_g\int_\dom D^g\nabla\fl^g\nabla\fl^g + \Sigma_r^g\bigl(\fl^g\bigr)^2\,\d{\bx}$}
+					  \end{minipage}
+				  };
+			  \end{tikzpicture}
+		  }
+			
+		\end{itemize}
+	}
+\end{frame}

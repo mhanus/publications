@@ -1,0 +1,74 @@
+\begin{frame}[t]
+	\frametitle{Model problem with known exact solution}\begin{center}
+	\eqnboxc[.9\textwidth]{
+		2-group neutron diffusion problem with source $Q^g$, B.C.:
+		\shorten{-.7em}{-1.2em}
+		\begin{align*}
+			\fl^g &= 0\quad\ \on{\fl}\\
+			-\bn\cdot D^g\nabla \fl^g &= 0\quad\ \on{sym}\\
+			 \bn\cdot D^g\nabla \fl^g + \gamma^g\fl^g &= 0\quad\ \on{\gamma}
+		\end{align*}
+		\lengthen
+	}
+	\eqnboxc[.9\textwidth]{
+		Exact solution\\[.4em]\hrule
+		\begin{align*}
+			\fl^1(x,y) &= \mathrm{e}^{-4 x^2} \left(\frac{y}{2}-\frac{y^2}{4}\right)\\
+			\fl^2(x,y) &= \frac{1}{10} (\sin^2(4 \pi x) \sin^2(4 \pi y)+1) \fl^1(x,y)
+		\end{align*}
+		\structure{$\Ra$} \alert{$\gamma^1 = \gamma^2 = 8,\quad Q^1(x,y),\ Q^2(x,y)$}
+	}	
+	\end{center}
+\end{frame}
+
+\begin{frame}[c]
+	\frametitle{Solution by Mathematica: \alt<1>{$\fl^1,\,\fl^2$}{$Q^1,\,Q^2$}}
+	\begin{tikzpicture}[overlay]
+		\node<1>[below=-3.3cm] at (current page.center) [inner sep=0pt, draw=structure, line width=2mm] {
+			\includegraphics[scale=.3]{images/exact/F}
+		};
+		\node<2>[below=-3.3cm] at (current page.center) [inner sep=0pt, draw=structure, line width=2mm] {
+			\includegraphics[scale=.3]{images/exact/Q}
+		};
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[c]
+	\frametitle{Solution by Hermes \\[-.25em]{\scriptsize for each group (left to right), solution and difference from the exact solution}}
+		\begin{tikzpicture}[overlay]
+		\node[above left=-.6cm and .025cm of current page.center] (f1) [inner sep=0pt] {
+			\includegraphics[height=3.5cm]{images/312121/F1}
+		};
+		\node[right=.25cm] at (f1.east) [inner sep=0pt] {
+			\includegraphics[height=3.5cm]{images/312121/F2}
+		};
+		\node[below=.25cm of f1.south, inner sep=0pt] (err1) {
+			\includegraphics[height=3.5cm]{images/312121/err1}
+		};
+		\node[right=.65cm of err1.east, inner sep=0pt] {
+			\includegraphics[height=3.5cm]{images/312121/err2}
+		};
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[c]
+	\frametitle{Final grids for each group}
+		\begin{tikzpicture}[overlay]
+		\node[left=.25cm  of current page.center] (f1) [inner sep=0pt] {
+			\includegraphics[width=.5\textwidth]{images/312121/grid1}
+		};
+		\node[right=.5cm] at (f1.east) [inner sep=0pt] {
+			\includegraphics[width=.5\textwidth]{images/312121/grid2}
+		};
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[c]
+	\frametitle{Convergence graphs}
+	\begin{tikzpicture}[gnuplot]
+		\only<1>{\input{images/312121/conv_dof.tikz}}
+		\only<2>{\input{images/312121/conv_cpu.tikz}}
+		\only<3>{\input{images/312121/dof_evol.tikz}}
+	\end{tikzpicture}
+\end{frame}
+

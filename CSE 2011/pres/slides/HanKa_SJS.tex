@@ -1,0 +1,37 @@
+\begin{frame}[t]
+  \frametitle{HanKa -- qualification}
+  \begin{itemize}
+	  \item Comparison with real data obtained from NPP Temelin
+   	\item HanKa's neutronics coupled with legacy T/H code of \\{\v S}koda Nuclear Machinery
+  	\item<2-> Homogenization / reconstruction procedures neccessary
+	  \item<3-> 3D eigenvalue problem
+  \end{itemize}
+  \begin{tikzpicture}[overlay]
+    \only<2>{
+      \node [xshift=2cm,yshift=-1.5cm] (hetero) {\includegraphics[scale=.25]{images/HanKa/avflux_proudyT.png}};
+      \node [right of=hetero, node distance=5cm] {\includegraphics[scale=.25]{images/HanKa/heteroflux_proudyT.png}};
+    }
+    \only<3>{
+      \node [xshift=5cm,yshift=-1.95cm] {\includegraphics[scale=.33]{images/HanKa/coreT.png}};
+    }
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}[t]
+  \frametitle{HanKa -- qualification}
+  \vspace*{-.25cm}
+  \centering\textcolor{structure.bg!95!blue}{\small Radial profile of reconstr. thermal ($g=2$) flux in all 48 layers}\\[-1.5em]
+  \begin{tikzpicture}[overlay]
+    \node [xshift=5.75cm,yshift=-3.75cm] (g1) {\includegraphics[scale=.33]{images/HanKa/our_vs_SJSg2T.png}};
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}[t]
+  \frametitle{HanKa -- qualification}
+  \vspace*{-.25cm}
+  \centering\textcolor{structure.bg!95!blue}{\small Detail}\\[-1.5em]
+  \begin{tikzpicture}[overlay]
+    \node [xshift=5.25cm,yshift=-3.75cm] (g1) {\includegraphics[scale=.35]{images/HanKa/our_vs_SJSg2_vyrezT.png}};
+  \end{tikzpicture}
+\end{frame}
+

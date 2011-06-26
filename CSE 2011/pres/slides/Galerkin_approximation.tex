@@ -1,0 +1,30 @@
+\begin{frame}[t]
+	\frametitle{Galerkin approximation}
+	\vspace{4em}
+	\begin{itemize}
+		\item Faster neutrons produce smoother flux distribution than slower ones\\
+					\structure{$\Ra$} look for group fluxes in \alert{group-dependent approximation spaces}
+		\begin{itemize}
+		    \item[$\Rightarrow$] multimesh discretization (Solin et al.) highly advantageous
+		\end{itemize}%\vspace*{1em}
+		%\item \alert{For $g=1,\ldots,G$}, define a mesh $\tau^g$ of non-overlapping volumes\\ \ltb{$K_n^g$} (\ltb{\textit{elements}}) covering the solution domain:
+		%			\shorten{-.1cm}{-.5cm} $$\tau^g = \bigcup\nolimits_n K_n^g = \dom$$ \lengthen 
+%		\item Hanging nodes allowed for more efficient adaptivity
+		%\item Construct subspaces $V^g_{hp} \subset V$ of $K^g$-wise polynomials of deg. $\leq p$, spanned by basis ~~~ \ltb{$\bigl\{\{N_{i}^g \in C^0(\overline{\dom})\}_{i=1}^{ndof_g}\bigr\}_{g=1}^G$} ~~~(\ltb{\textit{shape functions}})\vspace*{.6em}
+		\uncover<2->{\eqnboxc[.8\textwidth]{
+			for $\fl^g \in V: \fl^g_{hp} \approx \fl^g,\quad \fl^g_{hp}\in V^g_{hp}\subset V;$}
+		}
+		\uncover<3->{\vspace{1em}\eqnboxc[.8\textwidth]{
+		 	$\flfl_{hp} \approx \flfl,\quad	\flfl_{hp}\in \VV_{hp}\equiv \prod_{g=1}^G V_{hp}^{g}$}
+		}
+	\end{itemize}
+	
+	\vspace{.15cm}\color{Black}\hrule width 5.1cm
+		\begin{thebibliography}{\textwidth} 
+			\beamertemplatearticlebibitems
+			\bibitem[ES2T]{ES2T}
+			\footnotesize{P. Soli, J. Cerveny, L. Dubcova and D. Andrs},
+			\newblock \scriptsize{Monolithic discretization of linear thermoelasticity problems via adaptive multimesh hp-FEM}
+			\newblock J. Comput. Appl. Math 234 (2010)
+		\end{thebibliography}
+\end{frame}

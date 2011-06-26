@@ -1,0 +1,29 @@
+\begin{frame}[t]
+	\frametitle{Finite volume method -- generalized matrix eigenproblem} 
+		\eqnboxnamedc[.95\textwidth]{eqns}
+		{
+			Two main problems of neutronics
+		}
+		{
+			$\MM\flfl = \QQ,\quad \MM\flfl = \frac{1}{\keff}\FF\flfl$
+		}
+		\begin{itemize}
+			\item<1-> existence of a unique weak solution to both problems proved under some physically and geometrically justifiable conditions\\
+			      \graysmall{(Lax-Milgram / Krein-Rutmann theorem)} %\hfill\gray{(later)}
+			\item<2-> fine discretization required
+			\item<3-> \textit{aposteriori} error estimates available (based on finite-element anal.)
+		\end{itemize}
+		}
+		\only<3->{\vspace*{-.5cm}\hbox{}\hfill\color{Brown}{limited geometric adaptivity}\hfill
+				\vspace*{.15cm}\color{Black}\hrule width 5.1cm
+	\begin{thebibliography}{\textwidth} 
+	  \beamertemplatearticlebibitems
+		\bibitem[FVM]{FVM}
+		\footnotesize{Eymard, Gallou{\"e}t, Herbin},
+		\newblock \scriptsize{{F}inite {V}olume {M}ethods (2003)}    
+		
+		\bibitem[FVM2]{FVM2}
+		\footnotesize\url{http://www.mathematik.uni-ulm.de/numerik/staff/erath/}
+	\end{thebibliography}}
+\end{frame}
+

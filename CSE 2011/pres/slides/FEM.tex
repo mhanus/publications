@@ -1,0 +1,107 @@
+\begin{frame}[c]
+	\frametitle{Finite elements method} 
+	\begin{tikzpicture}[overlay]
+		\node[mybox, below left=1.6cm and .075cm of current page.north, anchor=north, inner ysep=2ex, inner xsep=2ex] (eqns) {%
+			\begin{minipage}{\textwidth}\centering
+				\only<1-5>{
+						\begin{overlayarea}{\linewidth}{2.6cm}
+						\centering
+						\only<1-2>{\small
+							\shorten{-1em}{-1em}
+							\begin{align*}
+								-\nabla\cdot D^g\nabla\fl^g+\Sigma_r^g\fl^g-\suma\Sigma_s^{gg'}\fl^{g'}
+								 	- \chi^g\!\sum_{g'}\nu\Sigma_f^{g'}\fl^{g'} &= Q^g \quad \mbox{in } \dom\\
+								 	\fl^g &= 0\quad \on{\fl}\\
+								 	-\bn\cdot D^g\nabla \fl^g &= 0\quad \on{sym}\\ 
+								 	 \bn\cdot D^g\nabla \fl^g + \gamma^g\fl^g &= 0\quad \on{\gamma}
+							\end{align*}
+							\lengthen
+						}
+						\only<3-4>{\small
+							For $g=1,\ldots,G$ find $\fl^g\in V,$ such that $\forall v^g\in V$
+							\begin{multline*}
+								-\alert{\bigl(v^g,}\nabla\cdot D^g\nabla\fl^g\alert{\bigr)}+\alert{\bigl(v^g,}\Sigma_r^g\fl^g\alert{\bigr)}-\alert{\bigl(v^g,}\suma\Sigma_s^{gg'}\fl^{g'}\alert{\bigr)}\\
+								 - \alert{\bigl(v^g,}\chi^g\!\sum_{g'}\nu\Sigma_f^{g'}\fl^{g'}\alert{\bigr)} = \alert{\bigl(v^g,}Q^g\alert{\bigr)}
+							\end{multline*}
+						}
+						\only<5>{\small\shorten{-1em}{-1em}
+							$$
+							\begin{matrix}
+									\a{1}{1} 	& + & \b{1}{2} 	& + & \cdots 	& + & \b{1}{G} 	& = & \l[1] \\
+									\b{2}{1} 	& + & \a{2}{2} 	& + & \cdots 	& + & \b{2}{G} 	& = & \l[2] \\
+									\vdots 		& 	& \vdots 		& 	&	\ddots	& 	&	\vdots 	 	& = & \vdots\\
+									\b{G}{1} 	& +	& \b{G}{2} 	& +	& \cdots 	& +	&	\a{G}{G} 	& = & \l[G]
+							\end{matrix}
+							$$\lengthen
+						}
+					\end{overlayarea}
+				}
+				\only<6->{
+							Find $\flfl \in \VV:\quad \A(\flfl,\vv) = \L(\vv),\quad \forall \vv\in \VV$
+				}
+			\end{minipage}
+			
+		};
+		\node[fancytitle] (eqnstitle) at (eqns.north) {
+			\only<1-2>{\small Model multigroup neutron diffusion problem}
+			\only<3->{\small Weak formulation}
+		};
+	\end{tikzpicture}
+	
+	\begin{tikzpicture}[overlay]
+		\only<1-2>{
+			\node[mybox,below=.3cm of eqns.south,anchor=north] (box) {%
+				\begin{minipage}[t]{.8\textwidth}\centering
+					$\dom \subset \RR[2], \bnd = \face[\fl] \cup \face[sym] \cup \face[\gamma]$, Lipschitz continuous,\\
+					$\fl^g: \dom \to \RR,\quad g = 1,\ldots,G$ 
+				\end{minipage}
+			};
+		}
+		\only<2>{
+			\ddd[below=.3cm of box.south,anchor=north]{.925\textwidth}{dspace}{%
+				\begin{itemize}
+				 	\item $V \equiv \{u\in\HH: u = 0 \mbox{ on }\face[\fl]\}$
+				\end{itemize}
+			}
+		}
+		%\only<3-4>{
+		%	\node[mybox,below=.1cm of eqns.south,anchor=north] (box) {%
+		%		\begin{minipage}[t]{.8\textwidth}\centering
+		%			$\dom \subset \RR[2],\ \bnd = \face[\fl] \cup \face[sym] \cup \face[\gamma]$, Lipschitz continuous,\\
+		%			$\fl^g: \dom \to \RR$,~~~ 
+		%			\alert{$(f,h) = \int_\dom fh\,\d{\bx}$}
+		%		\end{minipage}
+		%	};
+		%}
+		\only<4>{
+			\ddd[definebox,below=.5cm of eqns.south,anchor=north]{.925\textwidth}{dforms}{%
+				\begin{itemize}\addtolength{\itemsep}{-.3\baselineskip}
+				 	\item $G$ bilinear forms $\aa{g}: V \times V \to \RR$
+				 	\item $G^2$ bilinear forms $\bb{g}{g'}: V \times V \to \RR$
+				 	\item $G$ linear forms $\ll{g}: V \to \RR$
+				\end{itemize}
+			}
+		}
+		\only<5>{
+			\node[mybox,below=.2cm of eqns.south,anchor=north] (wf) {%
+				\begin{minipage}[t]{1.05\textwidth}\centering
+					$(f,h) = \int_\dom fh\,\d{\bx}$,\quad 
+					$(f,h)_{\face} = \int_{\face[\gamma]} fh\,\d{\bx_{\face}}$\\[.5em]
+					$\a[col]{g}{g} = \Bigl(\dkg{D^g}\ltb{\nabla\fl^g},\ltr{\nabla v^g}\Bigr) + \Bigl(\bigl(\dkg{\Sigma_r^g - \chi^g\nu\Sigma_f^{g}}\bigr)\ltb{\fl^{g}},\ltr{v^g}\Bigr) + (\dkg{\gamma^g}\ltb{\fl^g},\ltr{v^g})_{\face}$\\
+					$\b[col]{g}{g'} = \Bigl(\bigl(\dkg{-\Sigma_s^{gg'} - \chi^g\nu\Sigma_f^{g'}}\bigr)\ltb{\fl^{g'}},\ltr{v^{g}}\Bigr)$\\
+					$l^g(\ltr{v^g}) = \bigl(\dkg{Q^g},\ltr{v^g}\bigr)$					
+				\end{minipage}
+			};	
+		}
+		\only<6>{
+			\node[mybox,below of=eqns,anchor=north] (box) {%
+				\begin{minipage}[t]{.7\textwidth}\centering
+					$\VV \equiv \prod_{g=1}^G V$, \\[.5em]
+					$\A: \VV \times \VV \to \RR,\ \L: \VV \to \RR$\\[.5em]
+					$\A = \sum_{g=1}^G\a{g}{g} + \sum_{g=1}^G\sum_{g'=1}^G \b{g}{g'}$,\\[.5em] 
+					$\L = \sum_{g=1}^G\l[g]$
+				\end{minipage}
+			};
+		}
+	\end{tikzpicture}
+\end{frame}

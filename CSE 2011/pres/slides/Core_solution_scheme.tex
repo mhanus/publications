@@ -1,0 +1,38 @@
+\begin{frame}[t]
+	\frametitle{Iterative methods}            
+	\begin{itemize}
+	    \item Close connection to error estimation (e.g. Bank)
+	\end{itemize}
+	\vspace{-.5em}
+	\begin{center}
+		    \begin{tikzpicture}
+            \node[mybox, inner ysep=0pt] (boxx) {%
+                \begin{minipage}[t]{.7\textwidth}\centering
+                    $$
+                    \begin{aligned}
+                        \dkr[<2>]{\A(\flfl^{(n+\frac12)},\vv)} = \L(\vv) - \dkg[<3>]{\A(\mathbf{e}^{(n)},\vv)},\quad \vv\in\VV \\
+                        \dkb[<4>]{\A(\mathbf{e}^{(n+1)},\mathbf{w}) = \L(\mathbf{w}) - \A(\flfl^{(n+\frac12)},\mathbf{w}),\quad \mathbf{w}\in\EE}
+                    \end{aligned}
+                    $$\\[.1em]
+                \end{minipage}
+            };
+            \node[fancytitle] (boxxt) at (boxx.north) {\small Iterative form};
+            \end{tikzpicture}
+    \end{center}
+	\vspace{-.5em}    
+	    \begin{itemize}
+	        \item Close connection to the nodal method: $\dkr[<2>]{\MM\flfl} = \QQ - \dkg[<3>]{\DD\flfl}$.
+	        \uncover<4->{\item\dkb{Solution for the nodal expansion coefficients and correction factors}}
+	    \end{itemize}   
+	\uncover<5->{    
+    \begin{center}\alert{We believe that results of the iteration analysis for this method
+    could improve our theoretical understanding of the nodal method.}\end{center}}
+	\vspace{.15cm}\color{Black}\hrule width 5.1cm
+		\begin{thebibliography}{\textwidth} 
+			\beamertemplatearticlebibitems
+			\bibitem[ES2T]{ES2T}
+			\footnotesize{R. E. Bank},
+			\newblock \scriptsize{Hierarchical Bases and the Finite Element Method}
+			\newblock {\scriptsize Acta Numerica (1997)}
+		\end{thebibliography}
+\end{frame}

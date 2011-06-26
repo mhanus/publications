@@ -1,0 +1,22 @@
+\begin{frame}[t]
+	\frametitle{Nodal method -- pros and cons} 
+	\vspace*{1cm}
+	\begin{itemize}
+		\item<1-> \dkg{Very fast, memory efficient, well-suited for parallelization}
+		\item<1-> \dkg{Good for retrieving global information ($\keff$, average flux)\\[1em]}
+		\item<2-> \dkr{Requires high-quality coarse-mesh data\\ (non-trivial homogenization/equivalence procedures)}	
+		\item<2-> \dkr{For detailed flux distribution, most nodal methods require involved \textit{aposteriori} reconstruction}
+		\item<2-> \dkr{Highly geometry-dependent}
+		\item<2-> \dkr{Complicated theoretical analysis (order of accuracy, convergence)}
+	\end{itemize}	
+	\only<2->{
+		\vspace{.15cm}\color{Black}\hrule width 5.1cm
+		\begin{thebibliography}{\textwidth} 
+			\beamertemplatearticlebibitems
+			\bibitem[CMFD]{CMFD}
+			\footnotesize{Deokjung Lee},
+			\newblock \scriptsize{{C}onvergence {A}nalysis of the {C}oarse {M}esh {F}inite {D}ifference {M}ethod}
+			\newblock \color{Black}Ph.D. Thesis, Purdue University, 2003      
+		\end{thebibliography}		
+	}
+\end{frame}

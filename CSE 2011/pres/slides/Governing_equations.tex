@@ -1,0 +1,62 @@
+\begin{frame}[t]
+	\frametitle{Governing equations} 
+	\begin{tikzpicture}[baseline,overlay]
+		\node[mybox, below left=2cm and .05cm of current page.north, anchor=north, inner ysep=2ex, inner xsep=2ex] (treq) {%
+			\begin{overlayarea}{\textwidth}{1.8cm}
+				{
+					\centering
+					\only<1>{$\frac{1}{v}\pd{\afl}{t} + L\afl = (H+F)\afl + Q$\\[.3em]}
+					\only<2>{$\frac{1}{v}\pd{\fl}{t}  + L\fl = (H+F)\fl + Q$\\[.3em]}
+					\only<3>{$\frac{1}{v^g}\pd{\fl^g}{t} + L^{gg}\fl^g = \bigl(H^{gg'} + F^{gg'}\bigr)\fl^{g'} + Q^g, \quad g = 1,\ldots,G$\\[.3em]}
+					\only<4>{\vspace*{.5ex}$L^{gg}\fl^g = \bigl(H^{gg'} + F^{gg'}\bigr)\fl^{g'} + Q^g, \quad g = 1,2,\ldots,G$\\[.3em]}
+					\only<5>{\vspace*{.5ex}$L^{gg}\fl^g = \bigl(H^{gg'} + \lambda^{-1}F^{gg'}\bigr)\fl^{g'}, \quad g = 1,\ldots,G$\\[.3em]}
+				}
+				\color{white!35!black}\hrulefill\\
+				\small\color{bndcolor}
+				+ \only<1-3>{initial, }\only<5>{homogeneous }boundary conditions\\
+				\only<1-3>{+ PDEs describing fission product kinetics}
+			\end{overlayarea}
+		};
+		\node[fancytitle] (treqtitle) at (treq.north) {
+			\only<1>{Linear Boltzmann transport equation}
+			\only<2>{Diffusion approximation of neutron transport}
+			\only<3>{Multigroup approximation}
+			\only<4>{Steady state -- explicit sources (volumetric, boundary)}
+			\only<5>{Steady state -- only implicit sources (fission)}
+		};
+	\end{tikzpicture}
+	
+	\begin{tikzpicture}[overlay]
+	\node[below=.01cm of treq.south] {
+		\begin{columns}[t]
+		\begin{column}{.45\linewidth}
+		\begin{itemize}
+			\item\color{black} $L$ ... \alt<1>{transport}{diffusion} operator\\\graysmall{
+			\alt<1-2>{(\alt<1>{1st}{2nd} order differential in $\bx$)}{(diagonal $G\!\times\!G$ matrix)}}
+			\item\color{black} $H$ ... scattering operator\\\graysmall{ (\alt<1-2>{integral in $E$\only<1>{,$\bomega$}}{full $G\times G$ matrix})}
+			\item\color{black} $F$ ... fission operator\\\graysmall{ (\alt<1-2>{integral in $E$\only<1>{,$\bomega$}}{full $G\times G$ matrix})}
+			\item<1-4>\color{black} $Q$ ... explicit source \only<3->{\\\graysmall{($G\times1$ vector)}}
+		\end{itemize}
+		\end{column}
+		\begin{column}{.55\linewidth}
+		\begin{itemize}
+			\item \temporal<2>{$\afl(\bz)$ \ldots angular neutron flux}{$\fl(\bz)$ ... isotropic neutron flux}{$\fl(\bx)$ ... isotropic neutron flux \only<3->{\graysmall{($G\times1$ vector)}}}
+			\only<1-2>{
+				\item $\bz = (\bx,E\only<1>{,\bomega})$\\
+					$\hphantom{\bz = }$\graysmall{(space, energy\only<1>{, direction})}
+				\item $v = v(E)$ ... neutron speed
+			}
+			\only<3>{
+				\item $v^g$ ... avg. speed of neutrons\\ 
+					$\hphantom{v^g}$\hphantom{ ...} in group $g$
+			}				
+			\item<3->\color{black} $g,g'$ ... energy groups
+			\item<5> $\lambda_{\mathrm{max}}$ ... \emph{critical} eigenvalue\\$\hphantom{\lambda_{\mathrm{max}}\ldots\,}$(denote $\keff$)\\
+			$\phi_{\mathrm{max}}$ ... \emph{fundamental} neut. flux
+		\end{itemize}
+		\end{column}
+		\end{columns}
+	};
+	\end{tikzpicture}
+	% TODO: eventuelně zmínit Batemanovy rovnice	
+\end{frame}

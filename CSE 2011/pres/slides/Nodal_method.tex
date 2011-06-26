@@ -1,0 +1,69 @@
+\begin{frame}[t]
+	\frametitle{Nodal method} 
+	\eqnboxnamedc[.9\textwidth]{eqns}	{\small Nodal equation for each node $\V_n$}
+	{
+		\begin{overlayarea}{\linewidth}{1.1cm}
+			\centering
+			$\vphantom{\sum_a^b}
+			\sum_{r} \hat{j}_{n\mid r}^g+{\Sigma_{rn}^g}\hat\fl_n^g - \suma{\Sigma_{sn}^{gg'}}\hat\fl_n^{g'} - \chi^g\!\sum_{g'=1}\nu\Sigma_{fn}^{g'}\hat\fl_n^{g'}
+			=	Q_n^g$
+		\end{overlayarea}
+	}
+	
+	\begin{tikzpicture}[overlay]
+		\node[mybox, inner sep = 1ex, below=2ex of eqns.south west, anchor=north west] (box1) {
+			\begin{minipage}[c]{.45\textwidth}
+				$\hat\fl_n(x,y) \approx \fl_n + \sum_{i=1}^{K}c_i f_i(x,y)$ \\[2ex]
+				$\hat{j}_{n\mid r} \approx -\bn\cdot\Dnl\nabla \left.\hat\fl_n(x,y)\right\vert_{n\mid r}$
+			\end{minipage}
+		};
+		\node[fancytitle,inner sep=2pt,xshift=.5em,anchor=west] at (box1.north west) {\footnotesize Nodal expansion};				
+		\node [inner sep=0pt, below right=2.5ex and 1ex of eqns.south east, anchor=north east] (box2) {
+			\only<1-2>{
+				\input{images/core-detail.tex}
+			}
+			\only<3->{
+				\begin{minipage}[t]{.45\textwidth}
+					\centering\emph{Conditions for $c_i$}\\[.5ex]\hrule
+					\begin{itemize}
+					 	\item corner-point balance,\\
+					 	      system boundary conds.,\\
+					 	      internodal continuity conds.\\
+					 	\item weighted residual method
+					\end{itemize}
+				\end{minipage}
+			}
+		};
+		\only<1-4>{
+			\node[inner sep = 0pt, below=2.0ex of box1.south west, anchor=north west] (box3) {
+				\begin{minipage}[t]{\textwidth}\small
+					\begin{itemize}
+							\item \alert<2>{suitable choice of $K$ and $\left\{f_i\right\}$} to allow coarser spatial discretization
+									 			\uncover<2->{\\\Ra polynomial/semi-analytic/analytic nodal method}
+							\item<4> relies on the \alert<4>{saturation assumption}:~
+							$
+							    \norm{\fl^* - \hat\fl} \leq \beta \norm{\fl^* - \fl},
+							$~ where\\[.25em]
+							$\fl^*$ repr. exact solution, $0 < \beta < 1$ and $\hat\fl|_{\V_n} = \hat\fl_n$ for each node $\V_n$
+																 			
+					\end{itemize}
+				\end{minipage}
+			};
+		}
+		\only<5>{
+			\node[inner sep = 0pt, below=2.0ex of box1.south west, anchor=north west] (box3) {
+				\begin{minipage}[t]{\textwidth}\small
+					\begin{itemize}
+						\item nodal methods based on transverse integration:
+							\begin{itemize}\addtolength{\itemsep}{-.075\baselineskip}
+								\item<5> simpler and more effective solution in separate coordinate directions
+								\item<5> approximate coupling with other directions (\textit{"transverse leakage"})
+								\item<5> \alert{information loss} $\Ra$ delicate reconstruction of the original solution
+							\end{itemize}
+					\end{itemize}
+				\end{minipage}
+			};
+		}
+	\end{tikzpicture}
+\end{frame}	
+

@@ -1,0 +1,128 @@
+\begin{frame}[t]
+	\frametitle{Finite volume method} 
+	\only<1-6>{
+		\eqnboxnamedc[.9\textwidth]{eqns}
+		{
+			\only<1>{\small Multigroup diffusion approximation, fixed source}
+			\only<2>{\small Multigroup diffusion approximation, $g=1,\!\ldots\!,G$, fixed source}
+			\only<3>{\small Integration over $\V_n$ (reactor core: $\Omega = \cup_n \V_n$), divergence thm.}
+			\only<4->{\small Discrete formulation}
+			\only<5->{\small Discrete formulation, \textit{"albedo"} B.C.}
+		}
+		{
+		\begin{overlayarea}{\linewidth}{1.8cm}
+			\centering
+			\only<1>{$\vphantom{\suma}\mathbb{L}\Phi = (\mathbb{H}+\mathbb{F})\Phi + \mathbb{Q}$}
+			\only<2>{
+			$-\nabla\cdot\tzterm[dkgreen]{D}{D^g}\nabla\fl^g+\tzterm[dkgreen]{Sr}{\Sigma_r^g}\fl^g = \suma\tzterm[dkgreen]{Sgg}{\Sigma_s^{g\leftarrow g'}}\fl^{g'}
+				 + \tzterm[dkgreen]{chi}{\chi^g}\!\sum_{g'}\tzterm[dkgreen]{nSf}{\nu\Sigma_f^{g'}}\fl^{g'} + Q^g$
+			}
+			\only<3>{
+				$\sum_{r} j^g_{n\mid r}+\tzterm[dkgreen]{Sr}{\Sigma_{rn}^g}\fl_n^g = \suma\tzterm[dkgreen]{Sgg}{\Sigma_{sn}^{g\leftarrow g'}}\fl_n^{g'} 
+				+	\chi^g\!\sum_{g'}\tzterm[dkgreen]{nSf}{\nu\Sigma_{fn}^{g'}}\fl_n^{g'} + Q_n^g$
+			}
+			\only<4>{
+				$\sum_{r} j^g_{n\mid r}+\Sigma_{rn}^g\fl_n^g\ = \suma{\Sigma_{sn}^{gg'}}\fl_n^{g'} 
+				+	\chi^g\!\sum_{g'=1}\nu\Sigma_{fn}^{g'}\fl_n^{g'} + Q_n^g\quad \mbox{in } \dom$
+			}
+			\only<5>{
+				$\sum_{r} j^g_{n\mid r}+\Sigma_{rn}^g\fl_n^g\ = \suma{\Sigma_{sn}^{gg'}}\fl_n^{g'} 
+				+	\chi^g\!\sum_{g'=1}\nu\Sigma_{fn}^{g'}\fl_n^{g'} + Q_n^g\quad \mbox{in } \dom$\\[2ex]
+				$\tzterm[dkgreen]{gamma}{\gamma^g}\fl_{n\mid}^{g} - j^g_{n\mid} = 0\quad \mbox{on } \bnd$
+			}
+			
+			\only<6>{
+				$\sum_{r} j^g_{n\mid r}+\Sigma_{rn}^g\fl_n^g\ - \suma{\Sigma_{sn}^{gg'}}\fl_n^{g'} 
+				-	\chi^g\!\sum_{g'=1}\nu\Sigma_{fn}^{g'}\fl_n^{g'} = Q_n^g\quad \mbox{in } \dom$\\[2ex]
+				$\gamma^g\fl_{n\mid}^{g} - j^g_{n\mid} = 0\quad \mbox{on } \bnd$
+			}
+		\end{overlayarea}
+		}
+	}
+	\begin{tikzpicture}[overlay]
+		\only<2-3>{
+			\node[above=0.175cm of eqns.south, 
+						fill=eqbgcolor, text=dkgreen, 
+						draw, drop shadow={opacity=.5,fill=structure!50!black}] (desc) {
+							\alt<2>{physical parameters}{homogenized parameters}
+			};
+			\foreach \tgt in {Sr, Sgg, nSf}
+				\draw[->,dkgreen,opacity=.5,thick] (desc) -- (\tgt);			
+			\only<2>{ 
+				\draw[->,dkgreen,opacity=.5,thick] (desc) -- (chi);	
+				\draw[->,dkgreen,opacity=.5,thick] (desc) -- (D);	
+			}
+		}
+		\only<5>{
+			\node[below right= .35cm and .4cm of eqns.south, 
+						mybox, text=dkgreen, 
+						draw] (desc) {
+						\begin{minipage}{.43\textwidth}\small
+							$=1$ for symmetry,\\
+							$=0.5$ for vacuum b.c.\\
+							other typical bc: $\fl_{n\mid}=0$,\\
+							\hphantom{other typical bc: ~}$j_{n\mid} = -J_0$ 
+						\end{minipage}
+			};
+			\draw[->,dkgreen,opacity=.5,thick] (desc) -- (gamma);	
+		}
+	\end{tikzpicture}
+	
+	\only<2,3,4,6>{ 
+		\begin{tikzpicture}[overlay]
+			
+			\only<2>{
+				\node at (current page.south) [anchor=south,yshift=.55cm,xshift=-.55cm] {
+					\input{images/core.tikz}
+				};
+			}
+			\only<3>{
+				\node at (current page.south) [anchor=south,yshift=.75cm] {
+					\includegraphics[scale=.45]{images/core.pdf}
+				};
+			}
+			\only<4,6>{
+				\node at (current page.east) [anchor=east,yshift=-0.9cm,xshift=-2.1cm] {\input{images/tri.tex}};
+			}
+		\end{tikzpicture}	
+	}
+	\only<4-6>{
+		\begin{tikzpicture}[overlay]
+			\node[mybox, inner sep = 1ex, below=2ex of eqns.south west, anchor=north west] (box1) {	
+				\begin{minipage}[t]{.4\textwidth}\centering
+					\small
+					$\fl_n = \frac{1}{\abs{\V_n}} \int_{\V_n} \fl(\bx)\d{\bx}$\\[2ex]
+					%\only<4>{
+					%	\tikz[baseline]\node [anchor=text,rounded corners,draw=dkgreen] (FZ) {
+					%		$j_{n\mid r} = -\bn\cdot D_{n\mid r} \nabla \fl_{n\mid r}$
+					%	};
+					%}
+					\only<4-6>{
+						$j_{n\mid r} = -\bn\cdot D_{n\mid r} \nabla \fl_{n\mid r}$
+					}
+					%\only<6>{
+					%	$j_{n\mid r} \approx -\Dnl (\fl_r - \fl_n)$\\[2ex]$\Dnl = \frac{2 D_n D_r}{h(D_n + D_r)}$
+					%}
+				\end{minipage}
+			};
+	        \only<6>{
+                \node[mybox, inner ysep=2ex, inner xsep=2ex, below=6ex of box1.south west, anchor=north west] (box2) {%
+			            \begin{minipage}[t]{.9\textwidth}\centering
+				            $\MM\flfl = \QQ$
+			            \end{minipage}
+		            };
+	            \node[fancytitle] (box2title) at (box2.north) {System of linear algebraic equations};
+            }
+		\end{tikzpicture}
+	}
+%	\begin{tikzpicture}[overlay]
+%		\only<4>{
+%			\node[below=.5cm of FZ.south, 
+%						fill=eqbgcolor, text=dkgreen, 
+%						draw, drop shadow={opacity=.5,fill=structure!50!black}] (desc) {
+%							Fick's law
+%			};
+%			\draw[->,dkgreen,opacity=.5,thick] (desc) -- (FZ);
+%		}
+%	\end{tikzpicture}
+\end{frame}

@@ -1,0 +1,33 @@
+\begin{frame}[t]
+	\frametitle{Practical implementation} 
+	\vspace*{.3cm}
+	
+	\begin{itemize}
+		\item in \emph{Hermes} -- the open source pkg. for rapid development of efficient $hp$-FEM solvers
+		
+	\uncover<2->{
+	\begin{tikzpicture}
+			\node[mybox, inner ysep=2ex, inner xsep=2ex] (work) {%
+				\begin{minipage}{.9\textwidth}\centering
+%					\small
+					\begin{itemize}
+						\item Use solutions on the coarse mesh and the globally refined mesh: 
+						$$
+						    \flfl_{h,p}\ \mbox{ and }\ \flfl_{\rf} = \flfl_{h/2,p+1}$$
+						\item Save one coarse mesh solution per adaptation step by projecting: $$\flfl_{\rf} = \Pi_{hp}\flfl_{h/2,p+1},\quad \Pi_{hp} : \VV \to \VV_{hp}$$
+					\end{itemize}
+				\end{minipage}
+			};
+		\node[fancytitle] (worktitle) at (work.north) {\small Error estimation};
+	\end{tikzpicture}
+  }
+  \end{itemize}
+	\vspace{.45cm} \hrule width 5.1cm
+	\begin{thebibliography}{\textwidth} 
+	  \beamertemplatearticlebibitems
+		\bibitem[Sol]{Solin}
+		\footnotesize{P. Solin et al.}
+		\newblock \scriptsize{Hermes - Higher-Order Modular Finite Element System (User's Guide)}
+		\newblock {\scriptsize\color{blue}\underline{http://hpfem.org/}      }
+	\end{thebibliography}
+\end{frame}

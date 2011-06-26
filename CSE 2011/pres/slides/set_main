@@ -1,0 +1,6 @@
+#! /bin/bash
+
+for f in *.tex ; do
+	echo "$f"
+	echo '<?xml version="1.0" ?><properties><property key="MasterFilename" value="../presentation.tex"/></properties>' > ".$f.properties.xml"
+done

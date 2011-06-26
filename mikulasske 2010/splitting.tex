@@ -1,0 +1,48 @@
+% Define colors
+\colorlet{blockbg}{brown!20}
+
+% Define block styles
+\tikzstyle{neutronics} = [circle, thick, minimum size=0.6cm, draw=colN, fill=colN!20, text badly centered, inner sep=2pt, font=\small]
+\tikzstyle{thermo} = [circle, thick, minimum size=0.6cm, draw=colT, fill=colT!20, text badly centered, inner sep=2pt, font=\small]
+\tikzstyle{info} = [rectangle, font=\footnotesize]
+\tikzstyle{data} = [font=\scriptsize]
+\tikzstyle{trans} = [draw, -latex']
+
+%\pgfdeclarelayer{midground}
+%\pgfsetlayers{midground,main}    
+\begin{tikzpicture}[node distance=1.75cm, auto]
+\node [info] (ts1) at (0,0) {$t^s$};
+\node [neutronics, below=.2cm of ts1] (N1) {N};
+\node [thermo, below=1.2cm of N1] (T1) {T};
+\node [neutronics, right=of N1] (N2) {N};
+\node [thermo, below=1.2cm of N2] (T2) {T};
+\node [info, above=.2cm of N2] (ts2) {$t^{s+1}$};
+
+\path [trans] (N1) -- node [data, pos=.5, yshift=-.05cm] {$\flx\it{s+1}$} (N2);
+\path [trans] (T1) -- node [data, pos=.5, yshift=-.05cm] {$T\it{s+1}$} (T2);
+\path [trans] (T1) -- node [data, pos=.20, above, sloped, yshift=-.05cm] {$T\it{s+1}$} (N2);
+\path [trans] (N1) -- node [data, pos=.20, above, sloped, yshift=-.05cm] {$\flx\it{s+1}$} (T2);
+
+\draw
+  let
+    \p1=(N1),
+    \p2=(T1),
+    \p3=(N2)
+  in
+    node at (0.5*\x1 - 0.5*\x3,0.5*\y1 + 0.5*\y2) (junction1) {};
+    
+\path [trans] (junction1.south west) -- (N1);
+\path [trans] (junction1.north west) -- (T1);
+
+\draw
+  let
+    \p1=(N1),
+    \p2=(N2),
+    \p3=(T2)
+  in
+    node at (1.5*\x2 - 0.5*\x1,0.5*\y2 + 0.5*\y3) (junction2) {};
+
+\path [draw] (N2) -- (junction2.south east);
+\path [draw] (T2) -- (junction2.north east);
+    
+\end{tikzpicture}       

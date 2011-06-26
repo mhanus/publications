@@ -1,0 +1,51 @@
+% Define colors
+\colorlet{blockbg}{brown!30!yellow!20}
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blockbg, text badly centered, inner sep=0pt]
+\tikzstyle{state} = [ellipse, draw, fill=blockbg, text badly centered, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blockbg, node distance=.4cm,
+    text centered, minimum height=1em, inner sep=.1cm]
+\tikzstyle{block split} = [rectangle split, rectangle split parts=2, draw, fill=blockbg, node distance=.4cm,
+    text centered, minimum height=1em, inner xsep=.1cm, inner ysep=.05cm]    
+\tikzstyle{line} = [draw]
+\tikzstyle{trans} = [draw, -latex']
+
+\newcommand{\decide}[5]{
+  \node [decision, below=of #1, node distance=.6cm, minimum height=#3, minimum width=#4] (#2) {};
+  \node at (#2.center) {#5};
+}
+
+%\pgfdeclarelayer{midground}
+%\pgfsetlayers{midground,main}    
+\begin{tikzpicture}[node distance=.4cm, auto, font=\scriptsize]
+\node[block] at (0,0) (vstup) {
+  %vstup
+  %\nodepart{second}
+  $\varepsilon$, $\bY_0$, $\bJ(\bY) = \pd{\bF}{\bY}$
+};
+\coordinate [below=.2cm of vstup] (return);
+\node[block, below=.2cm of return] (res) {Řeš ~$\bJ(\bY_n)\delta\bY_{n\!+\!1} = -\bF(\bY_n)$};
+\node[block, below=of res] (update) {$\bY_{n\!+\!1} = \bY_n + \delta\bY_{n\!+\!1}$};
+\decide{update}{krit1}{1.25cm}{4cm}{$\begin{gathered}\norm{\bF(\bY_{n\!+\!1})}<\varepsilon\mbox{ a}\\\norm{\bY_{n\!+\!1}\!-\!\bY_n}< \varepsilon\end{gathered}$};
+%\decide{krit1}{krit2}{0.85cm}{3.25cm}{$\norm{\bY_{n\!+\!1}-\bY_n} < \varepsilon$};
+\node [state, below=of krit1, inner xsep=1pt, inner ysep=1pt] (konec) {konec};
+\coordinate[left=.5cm of krit1] (spojeni);
+
+
+\path [trans] (vstup) -- (res);
+\path [trans] (res) -- (update);
+\path [trans] (update) -- (krit1);
+\path [trans] (krit1) -- node [pos=.33, xshift=.05cm] {ano} (konec);
+%\path [trans] (krit2) -- node [pos=.33, xshift=.05cm] {ano} (konec);
+
+\path [line] (krit1) -- node [above,pos=.05, yshift=.05cm] {ne} (spojeni);
+%\path [line]
+%  let
+%    \p1=(krit2.west),
+%    \p2=(spojeni)
+%  in
+%    (\x1,\y1) -- node [above,pos=.05, yshift=.05cm] {ne} (\x2,\y1) -- (spojeni); 
+\path [draw] (spojeni) |- node [pos=.275,yshift=0cm, above, sloped, font=\scriptsize] {$n=n+1$} (return);
+
+\end{tikzpicture}       

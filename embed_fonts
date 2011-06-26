@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for f in "*.eps" ; do
+  pdf="${f%.eps}.pdf"
+  echo "$f --> $pdf" 
+  ps2pdf14 -dPDFSETTINGS=/prepress $f $pdf
+  pdftops -eps $pdf $f
+  mv "$f.eps" $f
+done

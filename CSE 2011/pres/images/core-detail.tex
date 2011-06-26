@@ -1,0 +1,47 @@
+%\documentclass[10pt]{article}
+%\usepackage{pgf,tikz}
+%\usetikzlibrary{arrows}
+%\pagestyle{empty}
+%\newcommand{\V}{\ensuremath{\mathcal{V}}}
+%\begin{document}
+
+\definecolor{uququq}{rgb}{0,0,0}
+\definecolor{ffttww}{rgb}{0.6,0.2,0}
+\definecolor{qqttzz}{rgb}{0,0.2,0.6}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.85cm,y=0.85cm]
+\clip(-.1,.5) rectangle (4,4);
+%\draw[step=1cm,color=blue!30] (0,0) grid (10,10);
+\fill[color=ffttww,fill=ffttww,fill opacity=.25] (0,2) -- (0,1) -- (0.87,0.5) -- (1.73,1) -- (1.73,2) -- (0.87,2.5) -- cycle;
+\fill[color=qqttzz,fill=qqttzz,fill opacity=.25] (1.73,2) -- (1.73,1) -- (2.6,0.5) -- (3.46,1) -- (3.46,2) -- (2.6,2.5) -- cycle;
+\fill[color=qqttzz,fill=qqttzz,fill opacity=.25] (0.87,3.5) -- (0.87,2.5) -- (1.73,2) -- (2.6,2.5) -- (2.6,3.5) -- (1.73,4) -- cycle;
+\draw [color=ffttww] (0,2)-- (0,1);
+\draw [color=ffttww] (0,1)-- (0.87,0.5);
+\draw [color=ffttww] (0.87,0.5)-- (1.73,1);
+\draw [color=ffttww] (1.73,1)-- (1.73,2);
+\draw [color=ffttww] (1.73,2)-- (0.87,2.5);
+\draw [color=ffttww] (0.87,2.5)-- (0,2);
+\draw [color=qqttzz] (1.73,2)-- (1.73,1) node[midway,sloped,above,black]{\small$n\mid r_1$};
+\draw [color=qqttzz] (1.73,1)-- (2.6,0.5);
+\draw [color=qqttzz] (2.6,0.5)-- (3.46,1);
+\draw [color=qqttzz] (3.46,1)-- (3.46,2);
+\draw [color=qqttzz] (3.46,2)-- (2.6,2.5);
+\draw [color=qqttzz] (2.6,2.5)-- (1.73,2);
+\draw [color=qqttzz] (0.87,3.5)-- (0.87,2.5);
+\draw [color=qqttzz] (0.87,2.5)-- (1.73,2) node[midway,sloped,above,black]{\small$n\mid r_2$};
+\draw [color=qqttzz] (1.73,2)-- (2.6,2.5);
+\draw [color=qqttzz] (2.6,2.5)-- (2.6,3.5);
+\draw [color=qqttzz] (2.6,3.5)-- (1.73,4);
+\draw [color=qqttzz] (1.73,4)-- (0.87,3.5);
+\draw (0.83,1.5) node[anchor=center,black] {$\V_n$};
+\draw (2.65,2) node[anchor=center,black] {$\V_{ r_1}$};
+\draw (1.78,3.58) node[anchor=center,black] {$\V_{ r_2}$};
+\draw [dash pattern=on 2pt off 2pt] (2.60,1.50)-- (3.90,2.25);
+\draw [dash pattern=on 2pt off 2pt] (1.73,3.00)-- (3.03,3.75);
+\draw (3.9,2.25) [<->] -- (3.03,3.75) node[midway,above,anchor=south west]{$h$};
+\draw [color=gray] (0.43,2.25) [->] -- (-0.07,3.12);
+\draw (0.33,2.75) node[anchor=center,gray] {$\mathbf{n}$};
+\fill [color=uququq] (1.76,3.00) circle (1.0pt);
+\fill [color=uququq] (2.60,1.50) circle (1.0pt);
+\end{tikzpicture}
+
+%\end{document}

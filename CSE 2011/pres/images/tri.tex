@@ -1,0 +1,24 @@
+\definecolor{uququq}{rgb}{0.25,0.25,0.25}
+\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+\definecolor{gattac}{rgb}{0,0.2,0.6}
+\definecolor{qqqqff}{rgb}{0,0,0}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=2cm,y=2cm]
+\clip (0.9,0.5) rectangle (2.6,2.1);
+\fill[color=zzttqq,fill=zzttqq,fill opacity=0.25] (1,1) -- (2,1) -- (1.5,1.87) -- cycle;
+\fill[color=gattac,fill=gattac,fill opacity=0.25] (2.5,1.87) -- (2,1) -- (1.5,1.87) -- cycle;
+\draw [color=zzttqq] (1,1)-- (2,1);
+\draw [color=zzttqq] (2,1)-- (1.5,1.87);
+\draw [color=zzttqq] (1.5,1.87)-- (1,1);
+\draw [color=gattac] (2.5,1.87)-- (2,1);
+\draw [color=gattac] (2,1)-- (1.5,1.87);
+\draw [color=gattac] (1.5,1.87)-- (2.5,1.87);
+\draw [<->] (1.85,0.68) -- (2.35,0.97);
+\draw [dash pattern=on 1pt off 1pt] (1.5,1.29)-- (1.85,0.68);
+\draw [dash pattern=on 1pt off 1pt] (2,1.58)-- (2.35,0.97);
+\draw (2.05,0.83) node[anchor=north west] {\small$h$};
+\draw (1.73,1.68) node[anchor=center,rotate=-60] {$n\mid r$};
+\draw (1.24,1.16) node[anchor=center] {$\V_n$};
+\draw (2.22,1.73) node[anchor=center] {$\V_r$};
+\fill [color=uququq] (1.5,1.29) circle (1.5pt);
+\fill [color=uququq] (2,1.58) circle (1.5pt);
+\end{tikzpicture}

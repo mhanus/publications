@@ -1,0 +1,275 @@
+%% \begin{tikzpicture}[gnuplot]
+%% generated with GNUPLOT 4.4p0 (Lua 5.1.4; terminal rev. 97, script rev. 96a)
+%% Út 8. červen 2010, 18:51:53 CEST
+\gpcolor{gp lt color axes}
+\gpsetlinetype{gp lt axes}
+\gpsetlinewidth{1.00}
+\draw[gp path] (2.240,0.985)--(9.039,0.985);
+\gpcolor{gp lt color border}
+\gpsetlinetype{gp lt border}
+\draw[gp path] (2.240,0.985)--(2.420,0.985);
+\draw[gp path] (9.039,0.985)--(8.859,0.985);
+\node[gp node right] at (2.056,0.985) { 10};
+\draw[gp path] (2.240,1.330)--(2.330,1.330);
+\draw[gp path] (9.039,1.330)--(8.949,1.330);
+\draw[gp path] (2.240,1.532)--(2.330,1.532);
+\draw[gp path] (9.039,1.532)--(8.949,1.532);
+\draw[gp path] (2.240,1.676)--(2.330,1.676);
+\draw[gp path] (9.039,1.676)--(8.949,1.676);
+\draw[gp path] (2.240,1.787)--(2.330,1.787);
+\draw[gp path] (9.039,1.787)--(8.949,1.787);
+\draw[gp path] (2.240,1.878)--(2.330,1.878);
+\draw[gp path] (9.039,1.878)--(8.949,1.878);
+\draw[gp path] (2.240,1.955)--(2.330,1.955);
+\draw[gp path] (9.039,1.955)--(8.949,1.955);
+\draw[gp path] (2.240,2.021)--(2.330,2.021);
+\draw[gp path] (9.039,2.021)--(8.949,2.021);
+\draw[gp path] (2.240,2.080)--(2.330,2.080);
+\draw[gp path] (9.039,2.080)--(8.949,2.080);
+\gpcolor{gp lt color axes}
+\gpsetlinetype{gp lt axes}
+\draw[gp path] (2.240,2.133)--(9.039,2.133);
+\gpcolor{gp lt color border}
+\gpsetlinetype{gp lt border}
+\draw[gp path] (2.240,2.133)--(2.420,2.133);
+\draw[gp path] (9.039,2.133)--(8.859,2.133);
+\node[gp node right] at (2.056,2.133) { 100};
+\draw[gp path] (2.240,2.478)--(2.330,2.478);
+\draw[gp path] (9.039,2.478)--(8.949,2.478);
+\draw[gp path] (2.240,2.680)--(2.330,2.680);
+\draw[gp path] (9.039,2.680)--(8.949,2.680);
+\draw[gp path] (2.240,2.823)--(2.330,2.823);
+\draw[gp path] (9.039,2.823)--(8.949,2.823);
+\draw[gp path] (2.240,2.935)--(2.330,2.935);
+\draw[gp path] (9.039,2.935)--(8.949,2.935);
+\draw[gp path] (2.240,3.025)--(2.330,3.025);
+\draw[gp path] (9.039,3.025)--(8.949,3.025);
+\draw[gp path] (2.240,3.102)--(2.330,3.102);
+\draw[gp path] (9.039,3.102)--(8.949,3.102);
+\draw[gp path] (2.240,3.169)--(2.330,3.169);
+\draw[gp path] (9.039,3.169)--(8.949,3.169);
+\draw[gp path] (2.240,3.227)--(2.330,3.227);
+\draw[gp path] (9.039,3.227)--(8.949,3.227);
+\gpcolor{gp lt color axes}
+\gpsetlinetype{gp lt axes}
+\draw[gp path] (2.240,3.280)--(9.039,3.280);
+\gpcolor{gp lt color border}
+\gpsetlinetype{gp lt border}
+\draw[gp path] (2.240,3.280)--(2.420,3.280);
+\draw[gp path] (9.039,3.280)--(8.859,3.280);
+\node[gp node right] at (2.056,3.280) { 1000};
+\draw[gp path] (2.240,3.625)--(2.330,3.625);
+\draw[gp path] (9.039,3.625)--(8.949,3.625);
+\draw[gp path] (2.240,3.827)--(2.330,3.827);
+\draw[gp path] (9.039,3.827)--(8.949,3.827);
+\draw[gp path] (2.240,3.971)--(2.330,3.971);
+\draw[gp path] (9.039,3.971)--(8.949,3.971);
+\draw[gp path] (2.240,4.082)--(2.330,4.082);
+\draw[gp path] (9.039,4.082)--(8.949,4.082);
+\draw[gp path] (2.240,4.173)--(2.330,4.173);
+\draw[gp path] (9.039,4.173)--(8.949,4.173);
+\draw[gp path] (2.240,4.250)--(2.330,4.250);
+\draw[gp path] (9.039,4.250)--(8.949,4.250);
+\draw[gp path] (2.240,4.316)--(2.330,4.316);
+\draw[gp path] (9.039,4.316)--(8.949,4.316);
+\draw[gp path] (2.240,4.375)--(2.330,4.375);
+\draw[gp path] (9.039,4.375)--(8.949,4.375);
+\gpcolor{gp lt color axes}
+\gpsetlinetype{gp lt axes}
+\draw[gp path] (2.240,4.428)--(9.039,4.428);
+\gpcolor{gp lt color border}
+\gpsetlinetype{gp lt border}
+\draw[gp path] (2.240,4.428)--(2.420,4.428);
+\draw[gp path] (9.039,4.428)--(8.859,4.428);
+\node[gp node right] at (2.056,4.428) { 10000};
+\draw[gp path] (2.240,4.773)--(2.330,4.773);
+\draw[gp path] (9.039,4.773)--(8.949,4.773);
+\draw[gp path] (2.240,4.975)--(2.330,4.975);
+\draw[gp path] (9.039,4.975)--(8.949,4.975);
+\draw[gp path] (2.240,5.118)--(2.330,5.118);
+\draw[gp path] (9.039,5.118)--(8.949,5.118);
+\draw[gp path] (2.240,5.230)--(2.330,5.230);
+\draw[gp path] (9.039,5.230)--(8.949,5.230);
+\draw[gp path] (2.240,5.320)--(2.330,5.320);
+\draw[gp path] (9.039,5.320)--(8.949,5.320);
+\draw[gp path] (2.240,5.397)--(2.330,5.397);
+\draw[gp path] (9.039,5.397)--(8.949,5.397);
+\draw[gp path] (2.240,5.464)--(2.330,5.464);
+\draw[gp path] (9.039,5.464)--(8.949,5.464);
+\draw[gp path] (2.240,5.522)--(2.330,5.522);
+\draw[gp path] (9.039,5.522)--(8.949,5.522);
+\gpcolor{gp lt color axes}
+\gpsetlinetype{gp lt axes}
+\draw[gp path] (2.240,5.575)--(9.039,5.575);
+\gpcolor{gp lt color border}
+\gpsetlinetype{gp lt border}
+\draw[gp path] (2.240,5.575)--(2.420,5.575);
+\draw[gp path] (9.039,5.575)--(8.859,5.575);
+\node[gp node right] at (2.056,5.575) { 100000};
+\gpcolor{gp lt color axes}
+\gpsetlinetype{gp lt axes}
+\draw[gp path] (2.240,0.985)--(2.240,5.575);
+\gpcolor{gp lt color border}
+\gpsetlinetype{gp lt border}
+\draw[gp path] (2.240,0.985)--(2.240,1.165);
+\draw[gp path] (2.240,5.575)--(2.240,5.395);
+\node[gp node center] at (2.240,0.677) { 0};
+\gpcolor{gp lt color axes}
+\gpsetlinetype{gp lt axes}
+\draw[gp path] (3.211,0.985)--(3.211,5.575);
+\gpcolor{gp lt color border}
+\gpsetlinetype{gp lt border}
+\draw[gp path] (3.211,0.985)--(3.211,1.165);
+\draw[gp path] (3.211,5.575)--(3.211,5.395);
+\node[gp node center] at (3.211,0.677) { 5};
+\gpcolor{gp lt color axes}
+\gpsetlinetype{gp lt axes}
+\draw[gp path] (4.183,0.985)--(4.183,5.575);
+\gpcolor{gp lt color border}
+\gpsetlinetype{gp lt border}
+\draw[gp path] (4.183,0.985)--(4.183,1.165);
+\draw[gp path] (4.183,5.575)--(4.183,5.395);
+\node[gp node center] at (4.183,0.677) { 10};
+\gpcolor{gp lt color axes}
+\gpsetlinetype{gp lt axes}
+\draw[gp path] (5.154,0.985)--(5.154,5.575);
+\gpcolor{gp lt color border}
+\gpsetlinetype{gp lt border}
+\draw[gp path] (5.154,0.985)--(5.154,1.165);
+\draw[gp path] (5.154,5.575)--(5.154,5.395);
+\node[gp node center] at (5.154,0.677) { 15};
+\gpcolor{gp lt color axes}
+\gpsetlinetype{gp lt axes}
+\draw[gp path] (6.125,0.985)--(6.125,4.779);
+\draw[gp path] (6.125,5.395)--(6.125,5.575);
+\gpcolor{gp lt color border}
+\gpsetlinetype{gp lt border}
+\draw[gp path] (6.125,0.985)--(6.125,1.165);
+\draw[gp path] (6.125,5.575)--(6.125,5.395);
+\node[gp node center] at (6.125,0.677) { 20};
+\gpcolor{gp lt color axes}
+\gpsetlinetype{gp lt axes}
+\draw[gp path] (7.096,0.985)--(7.096,4.779);
+\draw[gp path] (7.096,5.395)--(7.096,5.575);
+\gpcolor{gp lt color border}
+\gpsetlinetype{gp lt border}
+\draw[gp path] (7.096,0.985)--(7.096,1.165);
+\draw[gp path] (7.096,5.575)--(7.096,5.395);
+\node[gp node center] at (7.096,0.677) { 25};
+\gpcolor{gp lt color axes}
+\gpsetlinetype{gp lt axes}
+\draw[gp path] (8.068,0.985)--(8.068,4.779);
+\draw[gp path] (8.068,5.395)--(8.068,5.575);
+\gpcolor{gp lt color border}
+\gpsetlinetype{gp lt border}
+\draw[gp path] (8.068,0.985)--(8.068,1.165);
+\draw[gp path] (8.068,5.575)--(8.068,5.395);
+\node[gp node center] at (8.068,0.677) { 30};
+\gpcolor{gp lt color axes}
+\gpsetlinetype{gp lt axes}
+\draw[gp path] (9.039,0.985)--(9.039,5.575);
+\gpcolor{gp lt color border}
+\gpsetlinetype{gp lt border}
+\draw[gp path] (9.039,0.985)--(9.039,1.165);
+\draw[gp path] (9.039,5.575)--(9.039,5.395);
+\node[gp node center] at (9.039,0.677) { 35};
+\draw[gp path] (2.240,5.575)--(2.240,0.985)--(9.039,0.985)--(9.039,5.575)--cycle;
+\node[gp node center,rotate=-270] at (0.430,3.280) {Num. DOFs};
+\node[gp node center] at (5.639,0.215) {Adaptation step};
+\node[gp node center] at (5.639,6.037) {Evolution of NDOFs};
+\node[gp node right] at (7.571,5.241) {group 1};
+\gpcolor{gp lt color 2}
+\gpsetlinetype{gp lt plot 0}
+\gpsetlinewidth{2.00}
+\draw[gp path] (7.755,5.241)--(8.671,5.241);
+\draw[gp path] (2.823,2.015)--(3.017,2.117)--(3.211,2.117)--(3.406,2.117)--(3.600,2.117)%
+  --(3.794,2.117)--(3.988,2.117)--(4.183,2.117)--(4.377,2.227)--(4.571,2.227)--(4.765,2.227)%
+  --(4.960,2.227)--(5.154,2.468)--(5.348,2.468)--(5.542,2.668)--(5.737,2.668)--(5.931,2.827)%
+  --(6.125,2.913)--(6.319,3.127)--(6.514,3.129)--(6.708,3.255)--(6.902,3.277)--(7.096,3.310)%
+  --(7.291,3.386)--(7.485,3.514)--(7.679,3.524)--(7.873,3.531)--(8.068,3.567)--(8.262,3.592)%
+  --(8.456,3.675)--(8.650,3.768)--(8.845,3.919);
+\gpsetpointsize{4.00}
+\gppoint{gp mark 6}{(2.823,2.015)}
+\gppoint{gp mark 6}{(3.017,2.117)}
+\gppoint{gp mark 6}{(3.211,2.117)}
+\gppoint{gp mark 6}{(3.406,2.117)}
+\gppoint{gp mark 6}{(3.600,2.117)}
+\gppoint{gp mark 6}{(3.794,2.117)}
+\gppoint{gp mark 6}{(3.988,2.117)}
+\gppoint{gp mark 6}{(4.183,2.117)}
+\gppoint{gp mark 6}{(4.377,2.227)}
+\gppoint{gp mark 6}{(4.571,2.227)}
+\gppoint{gp mark 6}{(4.765,2.227)}
+\gppoint{gp mark 6}{(4.960,2.227)}
+\gppoint{gp mark 6}{(5.154,2.468)}
+\gppoint{gp mark 6}{(5.348,2.468)}
+\gppoint{gp mark 6}{(5.542,2.668)}
+\gppoint{gp mark 6}{(5.737,2.668)}
+\gppoint{gp mark 6}{(5.931,2.827)}
+\gppoint{gp mark 6}{(6.125,2.913)}
+\gppoint{gp mark 6}{(6.319,3.127)}
+\gppoint{gp mark 6}{(6.514,3.129)}
+\gppoint{gp mark 6}{(6.708,3.255)}
+\gppoint{gp mark 6}{(6.902,3.277)}
+\gppoint{gp mark 6}{(7.096,3.310)}
+\gppoint{gp mark 6}{(7.291,3.386)}
+\gppoint{gp mark 6}{(7.485,3.514)}
+\gppoint{gp mark 6}{(7.679,3.524)}
+\gppoint{gp mark 6}{(7.873,3.531)}
+\gppoint{gp mark 6}{(8.068,3.567)}
+\gppoint{gp mark 6}{(8.262,3.592)}
+\gppoint{gp mark 6}{(8.456,3.675)}
+\gppoint{gp mark 6}{(8.650,3.768)}
+\gppoint{gp mark 6}{(8.845,3.919)}
+\gppoint{gp mark 6}{(8.213,5.241)}
+\gpcolor{gp lt color border}
+\node[gp node right] at (7.571,4.933) {group 2 };
+\gpcolor{gp lt color 0}
+\draw[gp path] (7.755,4.933)--(8.671,4.933);
+\draw[gp path] (2.823,1.910)--(3.017,2.198)--(3.211,2.215)--(3.406,2.307)--(3.600,2.331)%
+  --(3.794,2.642)--(3.988,2.653)--(4.183,2.717)--(4.377,2.955)--(4.571,2.960)--(4.765,2.965)%
+  --(4.960,3.061)--(5.154,3.242)--(5.348,3.247)--(5.542,3.333)--(5.737,3.340)--(5.931,3.563)%
+  --(6.125,3.666)--(6.319,3.824)--(6.514,3.828)--(6.708,3.968)--(6.902,3.983)--(7.096,3.986)%
+  --(7.291,4.037)--(7.485,4.165)--(7.679,4.229)--(7.873,4.240)--(8.068,4.264)--(8.262,4.310)%
+  --(8.456,4.429)--(8.650,4.488)--(8.845,4.558);
+\gppoint{gp mark 4}{(2.823,1.910)}
+\gppoint{gp mark 4}{(3.017,2.198)}
+\gppoint{gp mark 4}{(3.211,2.215)}
+\gppoint{gp mark 4}{(3.406,2.307)}
+\gppoint{gp mark 4}{(3.600,2.331)}
+\gppoint{gp mark 4}{(3.794,2.642)}
+\gppoint{gp mark 4}{(3.988,2.653)}
+\gppoint{gp mark 4}{(4.183,2.717)}
+\gppoint{gp mark 4}{(4.377,2.955)}
+\gppoint{gp mark 4}{(4.571,2.960)}
+\gppoint{gp mark 4}{(4.765,2.965)}
+\gppoint{gp mark 4}{(4.960,3.061)}
+\gppoint{gp mark 4}{(5.154,3.242)}
+\gppoint{gp mark 4}{(5.348,3.247)}
+\gppoint{gp mark 4}{(5.542,3.333)}
+\gppoint{gp mark 4}{(5.737,3.340)}
+\gppoint{gp mark 4}{(5.931,3.563)}
+\gppoint{gp mark 4}{(6.125,3.666)}
+\gppoint{gp mark 4}{(6.319,3.824)}
+\gppoint{gp mark 4}{(6.514,3.828)}
+\gppoint{gp mark 4}{(6.708,3.968)}
+\gppoint{gp mark 4}{(6.902,3.983)}
+\gppoint{gp mark 4}{(7.096,3.986)}
+\gppoint{gp mark 4}{(7.291,4.037)}
+\gppoint{gp mark 4}{(7.485,4.165)}
+\gppoint{gp mark 4}{(7.679,4.229)}
+\gppoint{gp mark 4}{(7.873,4.240)}
+\gppoint{gp mark 4}{(8.068,4.264)}
+\gppoint{gp mark 4}{(8.262,4.310)}
+\gppoint{gp mark 4}{(8.456,4.429)}
+\gppoint{gp mark 4}{(8.650,4.488)}
+\gppoint{gp mark 4}{(8.845,4.558)}
+\gppoint{gp mark 4}{(8.213,4.933)}
+\gpcolor{gp lt color border}
+\gpsetlinetype{gp lt border}
+\gpsetlinewidth{1.00}
+\draw[gp path] (2.240,5.575)--(2.240,0.985)--(9.039,0.985)--(9.039,5.575)--cycle;
+%% coordinates of the plot area
+\gpdefrectangularnode{gp plot 1}{\pgfpoint{2.240cm}{0.985cm}}{\pgfpoint{9.039cm}{5.575cm}}
+%% \end{tikzpicture}
+%% gnuplot variables

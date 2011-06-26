@@ -1,0 +1,95 @@
+\definecolor{uququq}{rgb}{0.25,0.25,0.25}
+\definecolor{wwqqff}{rgb}{0.4,0,0.8}
+\definecolor{zzttqq}{rgb}{0.6,0.2,0}
+\definecolor{qqwwff}{rgb}{0,0.4,0.8}
+\definecolor{ttfftt}{rgb}{0.3,0.9,0.3}
+\definecolor{qqttzz}{rgb}{0,0.4,0.6}
+\definecolor{ffttww}{rgb}{0.8,0.2,0.4}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.6cm,y=0.6cm]
+\clip(0,0) rectangle (7,7);
+
+%1,1
+\coordinate (A) at (0,2);
+\coordinate (B) at (0,1);
+\coordinate (C) at (0.87,0.5);
+\coordinate (D) at (1.73,1);
+\coordinate (E) at (1.73,2);
+\coordinate (F) at (0.87,2.5);
+\coordinate (origin) at (intersection of A--D and B--E);
+% Draw the filled hex
+\fill[color=ffttww,fill=ffttww,fill opacity=1] (A) -- (B) -- (C) -- (D) -- (E) -- (F) -- cycle;						
+% Add triangles
+\draw (origin) -- (A) (origin) -- (B) (origin) -- (C)
+      (origin) -- (D) (origin) -- (E) (origin) -- (F);
+
+
+\fill[color=qqttzz,fill=qqttzz,fill opacity=1] (1.73,2) -- (1.73,1) -- (2.6,0.5) -- (3.46,1) -- (3.46,2) -- (2.6,2.5) -- cycle;				%2,1
+\fill[color=ttfftt,fill=ttfftt,fill opacity=1] (3.46,2) -- (3.46,1) -- (4.33,0.5) -- (5.2,1) -- (5.2,2) -- (4.33,2.5) -- cycle;				%3,1
+\fill[color=qqwwff,fill=qqwwff,fill opacity=1] (2.6,3.5) -- (2.6,2.5) -- (3.46,2) -- (4.33,2.5) -- (4.33,3.5) -- (3.46,4) -- cycle;		%3,2
+\fill[color=qqttzz,fill=qqttzz,fill opacity=1] (0.87,3.5) -- (0.87,2.5) -- (1.73,2) -- (2.6,2.5) -- (2.6,3.5) -- (1.73,4) -- cycle;		%2,2
+\fill[color=zzttqq,fill=zzttqq,fill opacity=1] (4.33,3.5) -- (4.33,2.5) -- (5.2,2) -- (6.06,2.5) -- (6.06,3.5) -- (5.2,4) -- cycle;  	%4,2
+\fill[color=zzttqq,fill=zzttqq,fill opacity=1] (3.46,5) -- (3.46,4) -- (4.33,3.5) -- (5.2,4) -- (5.2,5) -- (4.33,5.5) -- cycle; 			%4,3
+\fill[color=ttfftt,fill=ttfftt,fill opacity=1] (1.73,5) -- (1.73,4) -- (2.6,3.5) -- (3.46,4) -- (3.46,5) -- (2.6,5.5) -- cycle;				%3,3
+\fill[color=wwqqff,fill=wwqqff,fill opacity=1] (5.2,2) -- (5.2,1) -- (6.06,0.5) -- (6.93,1) -- (6.93,2) -- (6.06,2.5) -- cycle;				%4,1
+\fill[color=wwqqff,fill=wwqqff,fill opacity=1] (2.6,6.5) -- (2.6,5.5) -- (3.46,5) -- (4.33,5.5) -- (4.33,6.5) -- (3.46,7) -- cycle;		%4,4
+\draw [color=ffttww] (0,2)-- (0,1);
+\draw [color=ffttww] (0,1)-- (0.87,0.5);
+\draw [color=ffttww] (0.87,0.5)-- (1.73,1);
+\draw [color=ffttww] (1.73,1)-- (1.73,2);
+\draw [color=ffttww] (1.73,2)-- (0.87,2.5);
+\draw [color=ffttww] (0.87,2.5)-- (0,2);
+\draw [color=qqttzz] (1.73,2)-- (1.73,1);
+\draw [color=qqttzz] (1.73,1)-- (2.6,0.5);
+\draw [color=qqttzz] (2.6,0.5)-- (3.46,1);
+\draw [color=qqttzz] (3.46,1)-- (3.46,2);
+\draw [color=qqttzz] (3.46,2)-- (2.6,2.5);
+\draw [color=qqttzz] (2.6,2.5)-- (1.73,2);
+\draw [color=ttfftt] (3.46,2)-- (3.46,1);
+\draw [color=ttfftt] (3.46,1)-- (4.33,0.5);
+\draw [color=ttfftt] (4.33,0.5)-- (5.2,1);
+\draw [color=ttfftt] (5.2,1)-- (5.2,2);
+\draw [color=ttfftt] (5.2,2)-- (4.33,2.5);
+\draw [color=ttfftt] (4.33,2.5)-- (3.46,2);
+\draw [color=qqwwff] (2.6,3.5)-- (2.6,2.5);
+\draw [color=qqwwff] (2.6,2.5)-- (3.46,2);
+\draw [color=qqwwff] (3.46,2)-- (4.33,2.5);
+\draw [color=qqwwff] (4.33,2.5)-- (4.33,3.5);
+\draw [color=qqwwff] (4.33,3.5)-- (3.46,4);
+\draw [color=qqwwff] (3.46,4)-- (2.6,3.5);
+\draw [color=qqttzz] (0.87,3.5)-- (0.87,2.5);
+\draw [color=qqttzz] (0.87,2.5)-- (1.73,2);
+\draw [color=qqttzz] (1.73,2)-- (2.6,2.5);
+\draw [color=qqttzz] (2.6,2.5)-- (2.6,3.5);
+\draw [color=qqttzz] (2.6,3.5)-- (1.73,4);
+\draw [color=qqttzz] (1.73,4)-- (0.87,3.5);
+\draw [color=zzttqq] (4.33,3.5)-- (4.33,2.5);
+\draw [color=zzttqq] (4.33,2.5)-- (5.2,2);
+\draw [color=zzttqq] (5.2,2)-- (6.06,2.5);
+\draw [color=zzttqq] (6.06,2.5)-- (6.06,3.5);
+\draw [color=zzttqq] (6.06,3.5)-- (5.2,4);
+\draw [color=zzttqq] (5.2,4)-- (4.33,3.5);
+\draw [color=zzttqq] (3.46,5)-- (3.46,4);
+\draw [color=zzttqq] (3.46,4)-- (4.33,3.5);
+\draw [color=zzttqq] (4.33,3.5)-- (5.2,4);
+\draw [color=zzttqq] (5.2,4)-- (5.2,5);
+\draw [color=zzttqq] (5.2,5)-- (4.33,5.5);
+\draw [color=zzttqq] (4.33,5.5)-- (3.46,5);
+\draw [color=ttfftt] (1.73,5)-- (1.73,4);
+\draw [color=ttfftt] (1.73,4)-- (2.6,3.5);
+\draw [color=ttfftt] (2.6,3.5)-- (3.46,4);
+\draw [color=ttfftt] (3.46,4)-- (3.46,5);
+\draw [color=ttfftt] (3.46,5)-- (2.6,5.5);
+\draw [color=ttfftt] (2.6,5.5)-- (1.73,5);
+\draw [color=wwqqff] (5.2,2)-- (5.2,1);
+\draw [color=wwqqff] (5.2,1)-- (6.06,0.5);
+\draw [color=wwqqff] (6.06,0.5)-- (6.93,1);
+\draw [color=wwqqff] (6.93,1)-- (6.93,2);
+\draw [color=wwqqff] (6.93,2)-- (6.06,2.5);
+\draw [color=wwqqff] (6.06,2.5)-- (5.2,2);
+\draw [color=wwqqff] (2.6,6.5)-- (2.6,5.5);
+\draw [color=wwqqff] (2.6,5.5)-- (3.46,5);
+\draw [color=wwqqff] (3.46,5)-- (4.33,5.5);
+\draw [color=wwqqff] (4.33,5.5)-- (4.33,6.5);
+\draw [color=wwqqff] (4.33,6.5)-- (3.46,7);
+\draw [color=wwqqff] (3.46,7)-- (2.6,6.5);
+\end{tikzpicture}

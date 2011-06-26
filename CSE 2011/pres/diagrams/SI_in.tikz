@@ -1,0 +1,97 @@
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!10, minimum width=2em, text width=2em,
+    text badly centered, inner sep=0pt,drop shadow]
+\tikzstyle{block} = [rectangle, draw, fill=blue!10, node distance=1.25cm,
+    text centered, rounded corners, minimum height=1em,drop shadow]
+\tikzstyle{line} = [draw, -latex']
+
+% Define the arm and angle options
+\def\myarm{1cm}
+\def\myangle{0}
+\tikzset{
+  arm/.default=1cm,
+  arm/.code={\def\myarm{#1}}, % store value in \myarm
+  angle/.default=0,
+  angle/.code={\def\myangle{#1}} % store value in \myangle
+}
+
+% Define the myncbar to path
+\tikzset{
+    myncbar/.style = {to path={
+        % We need to calculate a couple of coordinates to help us draw
+        % the path. 
+        let
+            % Same as (\tikztotarget)++(\myangle:\myarm)
+            \p1=($(\tikztotarget)+(\myangle:\myarm)$)
+        in
+            -- ++(\myangle:\myarm) coordinate (tmp)
+            % Find the projection of the (tmp) coordinate
+            % on the line from the target to p1
+            -- ($(\tikztotarget)!(tmp)!(\p1)$)
+            -- (\tikztotarget)\tikztonodes
+    }}
+}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}    
+\begin{tikzpicture}[node distance = .8cm, auto]
+    % Place nodes
+    \node [block] at ($(current page.north)+(-2.5,-2.45cm)$) (SI11) {\scriptsize $\MM\flfl_{hp}^{(n)} = \FF\flfl_{hp}^{(n-1)}\left/k_{\mathrm{eff},hp}^{(n-1)}\right.$};
+    \coordinate (a) at ($(SI11.north)+(0,.85cm)$);
+    \node [block, below of=SI11] (SI12) {\scriptsize $k_{\mathrm{eff},hp}^{(n)} = k_{\mathrm{eff},hp}^{(n-1)} \frac{\norm{\FF\flfl_{hp}^{(n)}}}{\norm{\FF\flfl_{hp}^{(n-1)}}}$};
+    \node [decision, below of=SI12, node distance=1.65cm] (keff1) {\scriptsize $k_{\mathrm{eff},hp}^{(\infty)}$?};    
+   
+    \node [block, below of=keff1, node distance=1.6cm] (ref_glob) {\scriptsize refine mesh globally};
+    
+    \node [block, right of=SI11, node distance=5.4cm] (SI21) {\scriptsize $\MM\flfl^{(n)} = \FF\flfl^{(n-1)}/\keff^{(n-1)}$};
+    \coordinate (b) at ($(SI21.north)+(0,.6cm)$);
+    \node [block, below of=SI21] (SI22) {\scriptsize $\keff^{(n)} = \keff^{(n-1)} \frac{\norm{\FF\flfl^{(n)}}}{\norm{\FF\flfl^{(n-1)}}}$};
+    \node [decision, below of=SI22, node distance=1.5cm] (keff2) {\scriptsize $\keff^{(\infty)}$?};
+         
+    \node [block, right of=ref_glob, node distance=5.4cm] (err) {\scriptsize global/local err. est. (GE/LE)};        
+    \node [decision, below of=err, node distance=1.45cm] (mesh) {\scriptsize small GE?};
+
+    \node [block, left of=mesh, node distance=4cm] (adapt) {\scriptsize refine mesh adaptively};
+    \node (end) at ($(mesh.east)+(1,0cm)$) { ... };
+
+    % Draw edges
+    \path [line] (a) -- (SI11);
+    \path [line] (SI11) -- (SI12);
+    \path [line] (SI12) -- (keff1);
+    \path [line] (keff1.east) -| ++(1.4,0cm) node [above,pos=.15] {\scriptsize no} node [pos=.3,yshift=-14pt] {\scriptsize $n=n+1$} |- ($(SI11.north)+(0,.2cm)$);
+    \path [line] (keff1) -- node [near start] {\scriptsize yes}(ref_glob);
+    
+    \path [draw] (ref_glob.east) to[myncbar,angle=0,arm=1.2] (b) ;
+    
+    \path [line] (b) -- (SI21);
+    \path [line] (SI21) -- (SI22);
+    \path [line] (SI22) -- (keff2);
+    \path [line] (keff2.east) -| ++(1.4,0cm) node [above,pos=.15] {\scriptsize no} node [pos=.3,yshift=-14pt] {\scriptsize $n=n+1$} |- ($(SI21.north)+(0,.2cm)$);
+    \path [line] (keff2) -- (err) node [near start] {\scriptsize yes};
+    
+    \path [line] (err) -- (mesh);
+    
+    \path [line] (mesh.west) -- node [above,pos=.15,yshift=12pt] {\scriptsize no} (adapt);
+    \path [draw] (adapt.west) to[myncbar,angle=180,arm=3.2cm] (a);
+    \path [line] (mesh) -- node [above] {\scriptsize yes} (end);
+    
+    \begin{pgfonlayer}{background}
+      \coordinate (c) at ($(SI11.west)+(-.85,.7cm)$);
+      \coordinate (d) at ($(keff1.south)!.5!(ref_glob.north)+(2.25cm,0cm)$);
+      \coordinate (e) at ($(SI21.west)+(-.85,.7cm)$);
+      \coordinate (f) at ($(d)+(5.4cm,0cm)$);
+      \coordinate (g) at ($(c)+(-.5,.4cm)$);
+      \coordinate (h) at ($(f)+(.5cm,-1.15cm)$);
+
+      % Draw the background
+      \path[fill=yellow!20,rounded corners, draw=black!75, solid,opacity=1]
+      (g) rectangle (h);
+      \path[fill=red!20,rounded corners, draw=black!50, dashed,opacity=1]
+      (c) rectangle (d);
+      \path[fill=green!20,rounded corners, draw=black!50, dashed,opacity=1]
+      (e) rectangle (f);
+      \node [color=blue!85!black, text width=2cm, font=\scriptsize\itshape] at ($(d)+(-3.8cm,.4cm)$) {source iteration on coarse mesh};
+      \node [color=blue!85!black, text width=2cm, font=\scriptsize\itshape] at ($(f)+(-3.7cm,.4cm)$) {source iteration on refined mesh};
+    \end{pgfonlayer}
+\end{tikzpicture}
+

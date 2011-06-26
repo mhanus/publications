@@ -1,0 +1,7 @@
+The highly efficient nodal methods have originated in the nuclear engineering
+community, where they quickly overshadowed the more demanding finite volume or low-order finite element methods. 
+To our best knowledge, though, such methods received surprisingly little attention in other engineering fields, where the finite element methods were more dominant. In an effort to clarify their relationship, we will compare a modern adaptive FEM with the transverse integrated nodal method on a model neutron diffusion example.
+
+
+
+

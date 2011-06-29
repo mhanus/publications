@@ -108,7 +108,7 @@
 
 % Your institution may have specific regulations if you need an abstract and where it is to be placed in the document. The default here is just after title.
 
-\include{0_frontmatter/abstract}
+%\include{0_frontmatter/abstract}
 
 % The original template provides and abstractseparate environment, if your institution requires them to be separate. I think it's easier to print the abstract from the complete thesis by restricting printing to the relevant page.
 % \begin{abstractseparate}
@@ -172,7 +172,6 @@
 
 % Parts of the thesis are included below. Rename the files as required.
 % But take care that the paths match. You can also change the order of appearance by moving the include commands.
-\include{latex/comands}
 \include{1_introduction/introduction}	% background information
 %\include{1_introduction/aims}					% aims of the project
 
@@ -189,10 +188,10 @@
 %\begin{multicols}{2} % \begin{multicols}{ # columns}[ header text][ space]
 %\begin{tiny} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
 
-%\bibliographystyle{plainnat} % Title is link if provided
-%\renewcommand{\bibname}{References} % changes the header; default: Bibliography
+\bibliographystyle{plainnat} % Title is link if provided
+\renewcommand{\bibname}{Literature} % changes the header; default: Bibliography
 
-%\bibliography{9_backmatter/references} % adjust this to fit your BibTex file
+\bibliography{literature/literature.bib} % adjust this to fit your BibTex file
 
 %\end{tiny}
 %\end{multicols}

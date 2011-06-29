@@ -17,7 +17,15 @@
 \newcommand{\MM}{\mathbf{M}}
 \renewcommand{\SS}{\mathbf{S}}
 
-\newcommand{\bx}{\mathbf{x}}
-\newcommand{\bomega}{\mathbf{\Omega}}
+\newcommand{\br}{\vec{r}}
+\newcommand{\bomega}{\vec{\Omega}}
 
 \newcommand{\pd}[3][]{\ensuremath{\frac{\partial^{#1}#2}{\partial #3^{#1}}}}
+\newcommand{\grad}{\vec\nabla}
+
+\renewcommand{\d}[1]{\ensuremath{\mathrm{d}#1\,}}
+\newcommand{\intE}[4][]{\int_{#2}^{#3}\d{E#1}#4}
+\newcommand{\intEg}[3]{\int_{E^{#1}}^{E^{#2}}\d{E}#3}
+\newcommand{\intA}[4][]{\int_{#2}^{#3}\d{\bomega#1}#4}
+
+\renewcommand{\S}{S}
